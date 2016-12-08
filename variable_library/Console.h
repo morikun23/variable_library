@@ -12,7 +12,7 @@
 #include<iostream>
 #include <Windows.h>
 
-namespace debugNS {
+namespace variableNS {
 	class Console {
 	private:
 		//コンソールウィンドウのハンドル

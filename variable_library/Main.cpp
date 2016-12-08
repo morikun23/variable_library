@@ -1,5 +1,5 @@
 #include "Main.h"
-using namespace mainNS;
+using namespace variableNS;
 using namespace std;
 
 Main::Main() {
@@ -14,7 +14,9 @@ Main::~Main() {
 	this->UnLoad();
 	return;
 }
-
+///////////////////////////////////
+//ロード処理
+///////////////////////////////////
 void Main::Load(){
 	//ロードします
 	if (m_loaded) return;
@@ -22,12 +24,16 @@ void Main::Load(){
 	return;
 }
 
+//////////////////////////////////
+//毎フレーム更新
+//////////////////////////////////
 void Main::Update(){
-	//毎フレーム更新
-	cout << "s";
 	return;
 }
 
+/////////////////////////////////
+//終了処理
+/////////////////////////////////
 void Main::UnLoad() {
 	//終了処理
 	if (m_done) return;
