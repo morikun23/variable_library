@@ -3,7 +3,7 @@
 #include <iostream>
 #include "Main.h"
 #include "Console.h"
-
+#include<dinput.h>
 using namespace variableNS;
 
 // ウィンドウプロシージャ、ウィンドウに対するメッセージ処理を行う
@@ -55,7 +55,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	
 	// メッセージループ
 	MSG msg = {};
-	
+
 	while (doing) {
 		// アプリケーションに送られてくるメッセージをメッセージキューから取得する
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
