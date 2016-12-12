@@ -1,5 +1,5 @@
 #include "Console.h"
-using namespace debugNS;
+using namespace variableNS;
 using namespace std;
 
 Console::Console() {

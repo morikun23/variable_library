@@ -11,7 +11,7 @@
 #include"Console.h"
 #include <iostream>
 
-namespace mainNS {
+namespace variableNS {
 	class Main {
 	private:
 		//ƒ[ƒh‚ªŠ®—¹‚µ‚½‚©

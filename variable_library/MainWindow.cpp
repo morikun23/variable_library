@@ -4,8 +4,7 @@
 #include "Main.h"
 #include "Console.h"
 
-using namespace mainNS;
-using namespace debugNS;
+using namespace variableNS;
 
 // ウィンドウプロシージャ、ウィンドウに対するメッセージ処理を行う
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
