@@ -17,7 +17,11 @@
 //H28/12/3/ Delay関数の作成 
 //			GetYear関数以下時間に関する関数の作成
 //H28/12/4/ FrameTime関数の作成
-//
+//H28/12/12 GetTimer関数の修正
+//					小数点で記述できるように変更　修正前：if (i+5500 < Timer::GetTimer())  
+//												　修正後：iif (i+5.0f < Timer::GetTimer()) 
+//			Delay関数の修正
+//					waitTimeの定義を小数点にでできるように変更
 
 ///////////////////////////////////
 
@@ -37,7 +41,7 @@ namespace variableNS {
 
 	
 
-		static int start;
+		static float start;
 		static int count;
 
 	public:
@@ -74,7 +78,7 @@ namespace variableNS {
 		//指定した時間(秒)後にtrueを返す
 		//
 		///////////////////////
-		static bool Delay(int waitTime);
+		static bool Delay(float waitTime);
 
 
 		///////////////////////

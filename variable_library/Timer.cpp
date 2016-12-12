@@ -5,7 +5,7 @@
 
 using namespace variableNS;
 
-int Timer::start = 0;
+float Timer::start = 0.f;
 int Timer::count = 0;
 
 Timer::Timer() {
@@ -41,32 +41,23 @@ float Timer::FrameTime() {
 
 }
 
-bool Timer::Delay(int waitTime) {
+bool Timer::Delay(float waitTime) {
 	
-	Timer timer;
-
-	struct tm tm;
-	//ŠÔî•ñ‚Ìæ“¾
-	time_t t = time(NULL);
-	//“ú–{ŠÔ‚É•ÏŠ·
-	localtime_s(&tm, &t);
-
 
 	if (count == 0) {
-		start = clock(); //37
+		start = clock(); // 0
 		count++;
 	}
 		
 
     
 
-	if ((start + waitTime * 1000) < clock() ) {// 37+5  < 38  39
+	if ( (start + waitTime * 1000) <= clock()) {// 0+5500 < 
 		
 		start = 0;
 		count = 0;
 
 		return true;
-
 		
 	}
 	
