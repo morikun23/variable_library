@@ -6,26 +6,34 @@ Main::Main() {
 	//初期化します
 	m_loaded = false;
 	m_done = false;
-	this->Load();
+	
+	if (!m_loaded) {
+		this->Load();
+		m_loaded = true;
+	}
 	return;
 }
 
 Main::~Main() {
-	this->UnLoad();
+	//終了します
+	if (!m_done) {
+		this->UnLoad();
+		m_done = true;
+	}
 	return;
 }
 ///////////////////////////////////
 //ロード処理
+//起動時に１度だけ呼ばれます
 ///////////////////////////////////
 void Main::Load(){
 	//ロードします
-	if (m_loaded) return;
-	m_loaded = true;
 	return;
 }
 
 //////////////////////////////////
 //毎フレーム更新
+//毎フレーム呼び出されます
 //////////////////////////////////
 void Main::Update(){
 	return;
@@ -33,10 +41,8 @@ void Main::Update(){
 
 /////////////////////////////////
 //終了処理
+//終了時に１度だけ呼ばれます
 /////////////////////////////////
 void Main::UnLoad() {
-	//終了処理
-	if (m_done) return;
-	m_done = true;
 	return;
 }
