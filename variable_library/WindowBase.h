@@ -10,35 +10,64 @@
 ////////////////////////////////////
 #include <Windows.h>
 #include <iostream>
+#include"Vector2.h"
 namespace variableNS {
 	class WindowBase {
 	
 	private:
 		
 	protected:
-		/////////////////////////////////////
-		//ウィンドウの登録
-		////////////////////////////////////
-		virtual bool Register();
+		//ウィンドウの座標
+		Vector2 m_position;
+
+		//ウィンドウの幅
+		float m_width;
+
+		//ウィンドウの高さ
+		float m_height;
+
+		//ウィンドウ名
+		std::string m_name;
+
+		//ウィンドウハンドル
+		HWND m_handle;
+
+		//ウィンドウスタイル
+		DWORD m_windowStyle;
+
 		//デフォルト値
 		const int m_DEFAULT_WIDTH = 640;
 		const int m_DEFAULT_HEIGHT = 480;
 
+		
+		/////////////////////////////////////
+		//ウィンドウの登録
+		////////////////////////////////////
+		virtual bool Register(WindowBase*);
+		
+		////////////////////////////////////
+		//ウィンドウの生成
+		////////////////////////////////////
+		virtual bool Create();
+
+		////////////////////////////////////
+		//ウィンドウの表示
+		////////////////////////////////////
+		virtual void Open();
+
+		////////////////////////////////////
+		//ウィンドウの非表示
+		////////////////////////////////////
+		virtual void Close();
+
 	public:
-		std::wstring m_name;
-		float m_width;
-		float m_height;
-		HWND m_handle;
-		DWORD m_windowStyle;
 		
 		///////////////////////////////////
 		//ウィンドウプロシージャ
 		//////////////////////////////////
 		virtual LRESULT CALLBACK WinProc(HWND,UINT,WPARAM,LPARAM);
 
-		virtual bool Create();
-		virtual void Open();
-		virtual void Close();
+		
 	};
 }
 #endif // !WindowBase

@@ -11,11 +11,15 @@
 #include "MainWindow.h"
 #include"MainWindow.h"
 
+using namespace variableNS;
 class MainSystem {
-	public:
-		static void Load();
-		static void Update();
-		static void UnLoad();
 
+private:
+	static MainWindow* window;
+
+public:
+	static void Load();
+	static void Update();
+	static void UnLoad();
 };
 #endif // !MAINSYSTEM
