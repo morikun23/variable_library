@@ -9,6 +9,7 @@
 ///////////////////////////////////////////
 #include <Windows.h>
 #include "MainWindow.h"
+#include"Console.h"
 #include"MainWindow.h"
 
 using namespace variableNS;
@@ -16,8 +17,10 @@ class MainSystem {
 
 private:
 	MainWindow *window;
-
+	
 public:
+	MainSystem() {}
+	~MainSystem() {}
 	void Load();
 	void Update();
 	void UnLoad();

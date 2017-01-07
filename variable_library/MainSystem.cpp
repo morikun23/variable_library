@@ -2,6 +2,12 @@
 
 void MainSystem::Load() {
 	//////////////////////////////////
+	//デバッグ用コンソールの表示
+	//////////////////////////////////
+	Console::Instance().Open();
+
+	std::cout << "System start up" << std::endl;
+	//////////////////////////////////
 	//ウィンドウの生成
 	//////////////////////////////////
 	window = new MainWindow();
@@ -24,12 +30,11 @@ void MainSystem::Load() {
 
 void MainSystem::Update() {
 	
-
-	return;
 }
 
 void MainSystem::UnLoad() {
 	delete window;
+	Console::Instance().Close();
 }
 
 int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,int nCmdShow) {

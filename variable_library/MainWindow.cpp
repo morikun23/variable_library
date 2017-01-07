@@ -6,7 +6,6 @@ using namespace variableNS;
 //ウィンドウのサイズは自動で決まります
 /////////////////////////////////////////
 MainWindow::MainWindow(){
-	
 	m_width = m_DEFAULT_WIDTH;
 	m_height = m_DEFAULT_HEIGHT;
 	m_windowStyle = WS_ACTIVECAPTION;

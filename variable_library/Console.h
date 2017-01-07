@@ -20,16 +20,13 @@ namespace variableNS {
 		//ウィンドウが開いているか
 		bool isOpened;
 
+		Console(){}
+		~Console(){};
 	public:
-		//////////////////////////////////
-		//コンストラクタ
-		//////////////////////////////////
-		Console();
-
-		//////////////////////////////////
-		//デストラクタ
-		//////////////////////////////////
-		~Console();
+		static Console& Instance() {
+			static Console instance;
+			return instance;
+		}
 
 		//////////////////////////////////
 		//コンソールの表示
@@ -40,8 +37,8 @@ namespace variableNS {
 		//コンソールの非表示
 		//////////////////////////////////
 		void Close();
+
 	};
 
 }
-
 #endif // !CONSOLE
