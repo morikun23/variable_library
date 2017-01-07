@@ -23,7 +23,7 @@ namespace variableNS {
 		MainWindow();
 		~MainWindow();
 
-		 LRESULT CALLBACK WinProc(HWND, UINT, WPARAM, LPARAM) override;
+		 LRESULT CALLBACK WindowProcedure(HWND, UINT, WPARAM, LPARAM) override;
 
 	};
 }

@@ -15,11 +15,11 @@ using namespace variableNS;
 class MainSystem {
 
 private:
-	static MainWindow* window;
+	MainWindow *window;
 
 public:
-	static void Load();
-	static void Update();
-	static void UnLoad();
+	void Load();
+	void Update();
+	void UnLoad();
 };
 #endif // !MAINSYSTEM

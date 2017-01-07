@@ -23,6 +23,30 @@ void MainSystem::Load() {
 }
 
 void MainSystem::Update() {
+	
+
+	return;
+}
+
+void MainSystem::UnLoad() {
+	delete window;
+}
+
+int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,int nCmdShow) {
+	
+	MainSystem system;
+
+	///////////////////////////////
+	//システム起動
+	//各APIなどを初期化
+	/////////////-//////////////////
+	system.Load();
+
+	///////////////////////////////
+	//ゲーム再生
+	//メッセージループによって
+	//毎フレーム更新される
+	///////////////////////////////
 	MSG msg;
 
 	while (true) {
@@ -30,37 +54,17 @@ void MainSystem::Update() {
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 
+			system.Update();
+
 			if (msg.message == WM_QUIT) break;
 		}
 	}
-
-	return;
-}
-
-void MainSystem::UnLoad() {
-
-}
-
-int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,int nCmdShow) {
-	
-	///////////////////////////////
-	//システム起動
-	//各APIなどを初期化
-	///////////////////////////////
-	MainSystem::Load();
-
-	///////////////////////////////
-	//ゲーム再生
-	//メッセージループによって
-	//毎フレーム更新される
-	///////////////////////////////
-	MainSystem::Update();
 
 	//////////////////////////////
 	//システム終了
 	//各APIなどを解放する
 	//////////////////////////////
-	MainSystem::UnLoad();
+	system.UnLoad();
 
 	return 0;
 }

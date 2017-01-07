@@ -10,7 +10,7 @@ MainWindow::MainWindow(){
 	m_width = m_DEFAULT_WIDTH;
 	m_height = m_DEFAULT_HEIGHT;
 	m_windowStyle = WS_ACTIVECAPTION;
-	Register(this);
+	Register();
 	Create();
 	Open();
 }
@@ -25,7 +25,7 @@ MainWindow::~MainWindow(){
 ///////////////////////////////////////
 //ウィンドウプロシージャ―
 ///////////////////////////////////////
-LRESULT CALLBACK MainWindow::WinProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+LRESULT CALLBACK MainWindow::WindowProcedure(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 	switch (uMsg){
 	case WM_DESTROY:
 		PostQuitMessage(0);
@@ -33,3 +33,4 @@ LRESULT CALLBACK MainWindow::WinProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM
 	}
 	return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
+

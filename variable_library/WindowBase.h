@@ -21,10 +21,10 @@ namespace variableNS {
 		Vector2 m_position;
 
 		//ウィンドウの幅
-		float m_width;
+		int m_width;
 
 		//ウィンドウの高さ
-		float m_height;
+		int m_height;
 
 		//ウィンドウ名
 		std::string m_name;
@@ -43,7 +43,7 @@ namespace variableNS {
 		/////////////////////////////////////
 		//ウィンドウの登録
 		////////////////////////////////////
-		virtual bool Register(WindowBase*);
+		virtual bool Register();
 		
 		////////////////////////////////////
 		//ウィンドウの生成
@@ -65,8 +65,12 @@ namespace variableNS {
 		///////////////////////////////////
 		//ウィンドウプロシージャ
 		//////////////////////////////////
-		virtual LRESULT CALLBACK WinProc(HWND,UINT,WPARAM,LPARAM);
-
+		virtual LRESULT CALLBACK WindowProcedure(HWND,UINT,WPARAM,LPARAM);
+		
+		//////////////////////////////////
+		//ウィンドウプロシージャを取得する
+		//////////////////////////////////
+		static LRESULT CALLBACK GetWindowProcedure(HWND, UINT, WPARAM, LPARAM);
 		
 	};
 }
