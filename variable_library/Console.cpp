@@ -1,4 +1,5 @@
 #include "Console.h"
+
 using namespace variableNS;
 
 ////////////////////////////////
@@ -10,7 +11,7 @@ void Console::Open() {
 	// •W€o—Í‚ÌŠ„‚è“–‚Ä
 	freopen_s(&m_consoleHandle, "CON", "w", stdout);
 	isOpened = true;
-	std::cout << "Console start up" << std::endl;
+	std::cout << ">-- Console start up" << std::endl;
 }
 
 ////////////////////////////////

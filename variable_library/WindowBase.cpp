@@ -1,5 +1,4 @@
 #include "WindowBase.h"
-using namespace variableNS;
 
 ////////////////////////////////
 //ウィンドウを登録する
@@ -19,8 +18,13 @@ bool WindowBase::Register() {
 	wcex.lpszMenuName = NULL;
 	wcex.lpszClassName = m_name.c_str();
 	wcex.hIconSm = NULL;
-
-	return RegisterClassEx(&wcex) == 1;
+	
+	int result = RegisterClassEx(&wcex);
+	
+	if (result) {
+		std::cout << ">-- window registered" << std::endl;
+	}
+	return result;
 }
 
 //////////////////////////////
@@ -41,17 +45,21 @@ bool WindowBase::Create() {
 		GetModuleHandle(NULL),		//アプリケーションインスタンスのハンドル
 		this						//ウィンドウ作成データ
 		);
-
 	
-	return m_handle != NULL;
+	if (m_handle) {
+		std::cout << ">-- window created" << std::endl;
+	}
+
+	return m_handle;
 }
 
 //////////////////////////////////////
 //ウィンドウを開いて表示する
 //////////////////////////////////////
 void WindowBase::Open() {
-	ShowWindow(m_handle, 0);
+	ShowWindow(m_handle, SW_SHOW);
 	UpdateWindow(m_handle);
+	std::cout << ">-- window opend" << std::endl;
 }
 
 /////////////////////////////////////
@@ -60,6 +68,7 @@ void WindowBase::Open() {
 void WindowBase::Close() {
 	DestroyWindow(m_handle);
 	UnregisterClass(m_name.c_str(), GetModuleHandle(NULL));
+	std::cout << ">-- window closed" << std::endl;
 }
 ///////////////////////////////////////
 //ウィンドウプロシージャ
@@ -67,6 +76,7 @@ void WindowBase::Close() {
 LRESULT CALLBACK WindowBase::WindowProcedure(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 	switch (uMsg)
 	{
+	case WM_CREATE:
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
@@ -83,4 +93,11 @@ LRESULT CALLBACK WindowBase::GetWindowProcedure(HWND hwnd, UINT uMsg, WPARAM wPa
 		return window->WindowProcedure(hwnd, uMsg, wParam, lParam);
 	}
 	return DefWindowProc(hwnd, uMsg, wParam, lParam);
+}
+
+//////////////////////////////////////
+//ウィンドウハンドルを取得
+//////////////////////////////////////
+HWND WindowBase::GetHandle() {
+	return m_handle;
 }

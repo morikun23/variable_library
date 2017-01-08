@@ -6,7 +6,7 @@ void MainSystem::Load() {
 	//////////////////////////////////
 	Console::Instance().Open();
 
-	std::cout << "System start up" << std::endl;
+	std::cout << ">-- System start up" << std::endl;
 	//////////////////////////////////
 	//ウィンドウの生成
 	//////////////////////////////////
@@ -15,7 +15,7 @@ void MainSystem::Load() {
 	//////////////////////////////////
 	//Direct3Dの初期化
 	//////////////////////////////////
-
+	
 
 	//////////////////////////////////
 	//DirectInputの初期化
@@ -25,6 +25,13 @@ void MainSystem::Load() {
 	//DirectSoundの初期化
 	//////////////////////////////////
 
+	//////////////////////////////////
+	//シーンの登録
+	//////////////////////////////////
+
+	//////////////////////////////////
+	//シーンの再生
+	//////////////////////////////////
 	
 }
 
@@ -58,8 +65,6 @@ int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,i
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
-
-			system.Update();
 
 			if (msg.message == WM_QUIT) break;
 		}

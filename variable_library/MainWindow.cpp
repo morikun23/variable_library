@@ -1,5 +1,4 @@
 #include "MainWindow.h"
-using namespace variableNS;
 
 /////////////////////////////////////////
 //デフォルトコンストラクタ
@@ -8,10 +7,13 @@ using namespace variableNS;
 MainWindow::MainWindow(){
 	m_width = m_DEFAULT_WIDTH;
 	m_height = m_DEFAULT_HEIGHT;
+	m_position = Vector2(200, 100);
 	m_windowStyle = WS_ACTIVECAPTION;
-	Register();
-	Create();
-	Open();
+	m_name = "MainWindow";
+	if (Register()) {
+		Create();
+		Open();
+	}
 }
 
 ////////////////////////////////////////
@@ -26,6 +28,8 @@ MainWindow::~MainWindow(){
 ///////////////////////////////////////
 LRESULT CALLBACK MainWindow::WindowProcedure(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 	switch (uMsg){
+	case WM_CREATE:
+		std::cout << "created" << std::endl;
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;

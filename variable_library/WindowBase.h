@@ -7,10 +7,15 @@
 //概要　　：ウィンドウの基盤となるプロパティ
 //更新　　：
 //H28/12/22：クラスの作成
+//H29/01/05：WindowProcedureを追加
+//H29/01/08：GetHandle関数を追加
 ////////////////////////////////////
 #include <Windows.h>
 #include <iostream>
 #include"Vector2.h"
+
+using namespace variableNS;
+
 namespace variableNS {
 	class WindowBase {
 	
@@ -72,6 +77,10 @@ namespace variableNS {
 		//////////////////////////////////
 		static LRESULT CALLBACK GetWindowProcedure(HWND, UINT, WPARAM, LPARAM);
 		
+		//////////////////////////////////
+		//ウィンドウハンドルを取得
+		//////////////////////////////////
+		HWND GetHandle();
 	};
 }
 #endif // !WindowBase
