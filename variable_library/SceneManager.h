@@ -10,17 +10,23 @@
 //			・シーン終了
 //			といったシーンの動きについて仕事します。
 //更新	　：
+//H29/01/04：クラスの作成
+//H29/01/08：GetCurrentScene関数を修正
+//			 ※再生中のSceneクラスを取得
+//			 　→再生中のSceneクラスのアドレスを取得
 //////////////////////////////////////
 
 #include <Windows.h>
 #include <iostream>
 #include "Scene.h"
 
+using namespace variableNS;
+
 namespace variableNS {
 	class SceneManager {
 	private:
 		//登録されたシーン
-		variableNS::Scene *scene;
+		Scene *scene;
 		//現在のシーン
 		int currentScene;
 
@@ -28,7 +34,7 @@ namespace variableNS {
 		///////////////////////////////
 		//シーンの登録
 		///////////////////////////////
-		void SceneRegister(variableNS::Scene *scene);
+		void SceneRegister(Scene*);
 
 		///////////////////////////////
 		//シーンの再生
@@ -43,12 +49,12 @@ namespace variableNS {
 		//////////////////////////////
 		//シーン遷移
 		//////////////////////////////
-		void SceneTransition(variableNS::Scene *scene);
+		void SceneTransition(Scene*);
 
 		/////////////////////////////
 		//現在のシーンを取得する
 		/////////////////////////////
-		variableNS::Scene GetcurrentScene();
+		Scene& GetCurrentScene();
 	};
 }
 #endif // !SCENE_MANAGER

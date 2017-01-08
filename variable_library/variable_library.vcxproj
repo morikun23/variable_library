@@ -115,11 +115,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Console.cpp" />
+    <ClCompile Include="DefaultScene.cpp" />
     <ClCompile Include="Direct3DManager.cpp" />
     <ClCompile Include="Frame.cpp" />
     <ClCompile Include="MainSystem.cpp" />
     <ClCompile Include="MainWindow.cpp" />
-    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Vector2.cpp" />
@@ -129,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h" />
+    <ClInclude Include="DefaultScene.h" />
     <ClInclude Include="Direct3DManager.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="MainSystem.h" />
