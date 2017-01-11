@@ -19,7 +19,7 @@ namespace variableNS {
 		//プログラム起動するか
 		bool m_done;
 		//コンソール出力用インスタンス
-		debugNS::Console console;
+		Console console;
 	public:
 		///////////////////////////////
 		//コンストラクタ

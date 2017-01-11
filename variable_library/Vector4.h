@@ -1,12 +1,15 @@
+#ifndef VECTOR4
+#define VECTOR4
+
 //////////////////////////////////////////////////////////////////
 //クラス名： Vector4 
 //作成者 ：大山　亮 
 //概要  ：原点(ウィンドウの左上端)からのベクトル(力の向きや大きさ)を取得したり変更したりするクラス
 //更新  ：H28/12/05/ クラスの作成 
 //　　　：H28/12/11/　外積を求める関数を追加
+//　　　：H28/12/12/　リファクタリング、Set関数のVectorを引数にとった物を追加
+//　　　：H29/01/10/　オペレータの見直しと記述場所の変更
 //////////////////////////////////////////////////////////////////
-#ifndef VECTOR4
-#define VECTOR4
 
 namespace variableNS {
 
@@ -35,6 +38,7 @@ namespace variableNS {
 		//xx : ｘ座標の初期値
 		//yy : ｙ座標の初期値
 		///////////////////////////////////////
+		Vector4(int xx, int yy, int zz,int ww);
 		Vector4(float xx, float yy, float zz,float ww);
 
 
@@ -47,8 +51,10 @@ namespace variableNS {
 		//座標を代入する関数
 		//xx : 代入するｘ座標
 		//yy : 代入するｙ座標
+		//vec : 代入するx,y,z,w成分を持ったVector4
 		//////////////////////////////////////
 		void Set(float xx, float yy, float zz, float ww);
+		void Set(Vector4 vec);
 
 
 		//////////////////////////////////////
@@ -107,107 +113,30 @@ namespace variableNS {
 		static bool IsCross(Vector4 vec1, Vector4 vec2, Vector4 vec3, Vector4 vec4);
 
 
-		//////////////////////////////////////
-		//加算のoperator
-		//////////////////////////////////////
-		Vector4 operator + (Vector4 vec) {
-			x = x + vec.x;
-			y = y + vec.y;
-			z = z + vec.z;
-			w = w + vec.w;
-			return *this;
-		}
-		Vector4 operator += (Vector4 vec) {
-			x += vec.x;
-			y += vec.y;
-			z += vec.z;
-			w += vec.w;
-			return *this;
-		}
-
-		//////////////////////////////////////
-		//減算のoperator
-		//////////////////////////////////////
-		Vector4 operator - (Vector4 vec) {
-			x = x - vec.x;
-			y = y - vec.y;
-			z = z - vec.z;
-			w = w - vec.w;
-			return *this;
-		}
-		Vector4 operator -= (Vector4 vec) {
-			x -= vec.x;
-			y -= vec.y;
-			z -= vec.z;
-			w -= vec.w;
-			return *this;
-		}
-
-		//////////////////////////////////////
-		//偽のoperator
-		//////////////////////////////////////
-		bool operator != (Vector4 vec) {
-			bool vectorFlag;
-			if (x != vec.x && y != vec.y && z != vec.z && w != vec.w) {
-				vectorFlag = true;
-			}
-			else {
-				vectorFlag = false;
-			}
-			return vectorFlag;
-		}
-
-		//////////////////////////////////////
-		//真のoperator
-		//////////////////////////////////////
-		bool operator == (Vector4 vec) {
-			bool vectorFlag;
-			if (x == vec.x && y == vec.y && z == vec.z && w == vec.w) {
-				vectorFlag = true;
-			}
-			else {
-				vectorFlag = false;
-			}
-			return vectorFlag;
-		}
-
-		//////////////////////////////////////
-		//乗算のoperator
-		//ベクトル同士の乗算はご法度だそうです
-		//////////////////////////////////////
-		Vector4 operator * (int number) {
-			x = x * number;
-			y = y * number;
-			z = z * number;
-			w = w * number;
-			return *this;
-		}
-		Vector4 operator * (float number) {
-			x = x * number;
-			y = y * number;
-			z = z * number;
-			w = w * number;
-			return *this;
-		}
-
-		//////////////////////////////////////
-		//除法のoperator
-		//ベクトル同士の除法もご法度だそうです
-		//////////////////////////////////////
-		Vector4 operator / (int number) {
-			x = x / number;
-			y = y / number;
-			z = z / number;
-			w = w / number;
-			return *this;
-		}
-		Vector4 operator / (float number) {
-			x = x / number;
-			y = y / number;
-			z = z / number;
-			w = w / number;
-			return *this;
-		}
+		//各オペレータ
+		Vector4 operator +(Vector4);
+		void operator +=(Vector4);
+		Vector4 operator +(int);
+		void operator +=(int);
+		Vector4 operator +(float);
+		void operator +=(float);
+		Vector4 operator -(Vector4);
+		void operator -=(Vector4);
+		Vector4 operator -(int);
+		void operator -=(int);
+		Vector4 operator -(float);
+		void operator -=(float);
+		Vector4 operator *(int);
+		void operator *=(int);
+		Vector4 operator *(float);
+		void operator *=(float);
+		Vector4 operator /(int);
+		void operator /=(int);
+		Vector4 operator /(float);
+		void operator /=(float);
+		void operator =(Vector4);
+		bool operator ==(Vector4);
+		bool operator !=(Vector4);
 	};
 
 

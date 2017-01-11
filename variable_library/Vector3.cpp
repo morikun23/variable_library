@@ -17,6 +17,9 @@ const Vector3 Vector3::ONE = Vector3(1, 1, 1);
 Vector3::Vector3() {
 	x = y = z = 0;
 }
+Vector3::Vector3(int xx, int yy,int zz) {
+	x = xx; y = yy; z = zz;
+}
 Vector3::Vector3(float xx, float yy, float zz) {
 	x = xx; y = yy; z = zz;
 }
@@ -28,6 +31,9 @@ Vector3::~Vector3() {
 //更新(セット)
 void Vector3::Set(float xx, float yy, float zz) {
 	x = xx; y = yy; z = zz;
+}
+void Vector3::Set(Vector3 vec) {
+	x = vec.x; y = vec.y; z = vec.z;
 }
 
 //正規化
@@ -114,4 +120,141 @@ float VectorLength(Vector3 *vec) {
 }
 float VectorLength(Vector3 vec) {
 	return sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+}
+
+//各オペレータ
+Vector3 Vector3::operator +(Vector3 vec) {
+	this->x = this->x + vec.x;
+	this->y = this->y + vec.y;
+	this->z = this->z + vec.z;
+	return *this;
+}
+
+void Vector3::operator +=(Vector3 vec) {
+	*this = *this + vec;
+}
+
+Vector3 Vector3::operator +(int num) {
+	this->x = this->x + num;
+	this->y = this->y + num;
+	this->z = this->z + num;
+	return *this;
+}
+
+void Vector3::operator +=(int num) {
+	*this = *this + num;
+}
+
+Vector3 Vector3::operator +(float num) {
+	this->x = this->x + num;
+	this->y = this->y + num;
+	this->z = this->z + num;
+	return *this;
+}
+
+void Vector3::operator +=(float num) {
+	*this = *this + num;
+}
+
+Vector3 Vector3::operator -(Vector3 vec) {
+	this->x = this->x - vec.x;
+	this->y = this->y - vec.y;
+	this->z = this->z - vec.z;
+	return *this;
+}
+
+void Vector3::operator -=(Vector3 vec) {
+	*this = *this - vec;
+}
+
+Vector3 Vector3::operator -(int num) {
+	this->x = this->x - num;
+	this->y = this->y - num;
+	this->z = this->z - num;
+	return *this;
+}
+
+void Vector3::operator -=(int num) {
+	*this = *this - num;
+}
+
+Vector3 Vector3::operator -(float num) {
+	this->x = this->x - num;
+	this->y = this->y - num;
+	this->z = this->z - num;
+	return *this;
+}
+
+void Vector3::operator -=(float num) {
+	*this = *this - num;
+}
+
+Vector3 Vector3::operator *(int num) {
+	this->x = this->x * num;
+	this->y = this->y * num;
+	this->z = this->z * num;
+	return *this;
+}
+
+void Vector3::operator *=(int num) {
+	*this = *this * num;
+}
+
+Vector3 Vector3::operator *(float num) {
+	this->x = this->x * num;
+	this->y = this->y * num;
+	this->z = this->z * num;
+	return *this;
+}
+
+void Vector3::operator *=(float num) {
+	*this = *this * num;
+}
+
+Vector3 Vector3::operator /(int num) {
+	this->x = this->x / num;
+	this->y = this->y / num;
+	this->z = this->z / num;
+	return *this;
+}
+
+void Vector3::operator /=(int num) {
+	*this = *this / num;
+}
+
+Vector3 Vector3::operator /(float num) {
+	this->x = this->x / num;
+	this->y = this->y / num;
+	this->z = this->z / num;
+	return *this;
+}
+
+void Vector3::operator /=(float num) {
+	*this = *this / num;
+}
+
+void Vector3::operator =(Vector3 vec) {
+	this->Set(vec);
+}
+
+bool Vector3::operator !=(Vector3 vec) {
+	bool vectorFlag;
+	if (this->x != vec.x && this->y != vec.y && this->z != vec.z) {
+		vectorFlag = true;
+	}
+	else {
+		vectorFlag = false;
+	}
+	return vectorFlag;
+}
+
+bool Vector3::operator ==(Vector3 vec) {
+	bool vectorFlag;
+	if (this->x == vec.x && this->y == vec.y && this->z == vec.z) {
+		vectorFlag = true;
+	}
+	else {
+		vectorFlag = false;
+	}
+	return vectorFlag;
 }

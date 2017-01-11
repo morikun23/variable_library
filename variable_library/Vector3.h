@@ -1,12 +1,15 @@
+#ifndef VECTOR3
+#define VECTOR3
+
 //////////////////////////////////////////////////////////////////
 //クラス名： Vector3 
 //作成者 ：大山　亮 
 //概要  ：原点(ウィンドウの左上端)からのベクトル(力の向きや大きさ)を取得したり変更したりするクラス
 //更新  ：H28/12/04/ クラスの作成 
 //　　　：H28/12/11/　外積を求める関数を追加
+//　　　：H28/12/12/　リファクタリング、Set関数のVectorを引数にとった物を追加
+//　　　：H29/01/10/　オペレータの見直しと記述場所の変更
 //////////////////////////////////////////////////////////////////
-#ifndef VECTOR3
-#define VECTOR3
 
 namespace variableNS {
 
@@ -35,7 +38,8 @@ namespace variableNS {
 		//xx : ｘ座標の初期値
 		//yy : ｙ座標の初期値
 		///////////////////////////////////////
-		Vector3(float xx, float yy,float zz);
+		Vector3(int xx, int yy, int zz);
+		Vector3(float xx, float yy,float zz);	
 
 
 		//////////////////////////////////////
@@ -47,8 +51,10 @@ namespace variableNS {
 		//座標を代入する関数
 		//xx : 代入するｘ座標
 		//yy : 代入するｙ座標
+		//vec : 代入するx,y,z成分を持ったVector3
 		//////////////////////////////////////
 		void Set(float xx, float yy, float zz);
+		void Set(Vector3 vec);
 
 
 		//////////////////////////////////////
@@ -107,99 +113,30 @@ namespace variableNS {
 		static bool IsCross(Vector3 vec1, Vector3 vec2, Vector3 vec3, Vector3 vec4);
 
 
-		//////////////////////////////////////
-		//加算のoperator
-		//////////////////////////////////////
-		Vector3 operator + (Vector3 vec) {
-			x = x + vec.x;
-			y = y + vec.y;
-			z = z + vec.z;
-			return *this;
-		}
-		Vector3 operator += (Vector3 vec) {
-			x += vec.x;
-			y += vec.y;
-			z += vec.z;
-			return *this;
-		}
-
-		//////////////////////////////////////
-		//減算のoperator
-		//////////////////////////////////////
-		Vector3 operator - (Vector3 vec) {
-			x = x - vec.x;
-			y = y - vec.y;
-			z = z - vec.z;
-			return *this;
-		}
-		Vector3 operator -= (Vector3 vec) {
-			x -= vec.x;
-			y -= vec.y;
-			z -= vec.z;
-			return *this;
-		}
-
-		//////////////////////////////////////
-		//偽のoperator
-		//////////////////////////////////////
-		bool operator != (Vector3 vec) {
-			bool vectorFlag;
-			if (x != vec.x && y != vec.y && z != vec.z) {
-				vectorFlag = true;
-			}
-			else {
-				vectorFlag = false;
-			}
-			return vectorFlag;
-		}
-
-		//////////////////////////////////////
-		//真のoperator
-		//////////////////////////////////////
-		bool operator == (Vector3 vec) {
-			bool vectorFlag;
-			if (x == vec.x && y == vec.y && z == vec.z) {
-				vectorFlag = true;
-			}
-			else {
-				vectorFlag = false;
-			}
-			return vectorFlag;
-		}
-
-		//////////////////////////////////////
-		//乗算のoperator
-		//ベクトル同士の乗算はご法度だそうです
-		//////////////////////////////////////
-		Vector3 operator * (int number) {
-			x = x * number;
-			y = y * number;
-			z = z * number;
-			return *this;
-		}
-		Vector3 operator * (float number) {
-			x = x * number;
-			y = y * number;
-			z = z * number;
-			return *this;
-		}
-
-		//////////////////////////////////////
-		//除法のoperator
-		//ベクトル同士の除法もご法度だそうです
-		//////////////////////////////////////
-		Vector3 operator / (int number) {
-			x = x / number;
-			y = y / number;
-			z = z / number;
-			return *this;
-		}
-		Vector3 operator / (float number) {
-			x = x / number;
-			y = y / number;
-		    z = z / number;
-			return *this;
-		}
+		//各オペレータ
+		Vector3 operator +(Vector3);
+		void operator +=(Vector3);
+		Vector3 operator +(int);
+		void operator +=(int);
+		Vector3 operator +(float);
+		void operator +=(float);
+		Vector3 operator -(Vector3);
+		void operator -=(Vector3);
+		Vector3 operator -(int);
+		void operator -=(int);
+		Vector3 operator -(float);
+		void operator -=(float);
+		Vector3 operator *(int);
+		void operator *=(int);
+		Vector3 operator *(float);
+		void operator *=(float);
+		Vector3 operator /(int);
+		void operator /=(int);
+		Vector3 operator /(float);
+		void operator /=(float);
+		void operator =(Vector3);
+		bool operator ==(Vector3);
+		bool operator !=(Vector3);
 	};
 
 

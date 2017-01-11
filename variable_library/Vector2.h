@@ -1,12 +1,15 @@
+#ifndef VECTOR2
+#define VECTOR2
+
 //////////////////////////////////////////////////////////////////
 //クラス名： Vector2 
 //作成者 ：大山　亮 
 //概要  ：原点(ウィンドウの左上端)からのベクトル(力の向きや大きさ)を取得したり変更したりするクラス
 //更新  ：H28/12/02/ クラスの作成 
 //　　　：H28/12/11/　外積を求める関数を追加
+//　　　：H28/12/12/　リファクタリング、Set関数のVectorを引数にとった物を追加
+//　　　：H29/01/10/　オペレータの見直しと記述場所の変更
 //////////////////////////////////////////////////////////////////
-#ifndef VECTOR2
-#define VECTOR2
 
 namespace variableNS {
 
@@ -35,6 +38,7 @@ namespace variableNS {
 		//xx : ｘ座標の初期値
 		//yy : ｙ座標の初期値
 		///////////////////////////////////////
+		Vector2(int xx, int yy);
 		Vector2(float xx, float yy);
 		
 
@@ -47,9 +51,10 @@ namespace variableNS {
 		//座標を代入する関数
 		//xx : 代入するｘ座標
 		//yy : 代入するｙ座標
+		//vec : 代入するx,y成分を持ったVector2
 		//////////////////////////////////////
 		void Set(float xx, float yy);
-
+		void Set(Vector2 vec);
 
 		//////////////////////////////////////
 		//ベクトルの大きさを１に揃える(正規化)
@@ -107,91 +112,30 @@ namespace variableNS {
 		static bool IsCross(Vector2 vec1, Vector2 vec2,Vector2 vec3, Vector2 vec4);
 
 
-		//////////////////////////////////////
-		//加算のoperator
-		//////////////////////////////////////
-		Vector2 operator + (Vector2 vec) {
-			x = x + vec.x;
-			y = y + vec.y;
-			return *this;
-		}
-		Vector2 operator += (Vector2 vec) {
-			x += vec.x;
-			y += vec.y;
-			return *this;
-		}
-
-		//////////////////////////////////////
-		//減算のoperator
-		//////////////////////////////////////
-		Vector2 operator - (Vector2 vec) {
-			x = x - vec.x;
-			y = y - vec.y;
-			return *this;
-		}
-		Vector2 operator -= (Vector2 vec) {
-			x -= vec.x;
-			y -= vec.y;
-			return *this;
-		}
-
-		//////////////////////////////////////
-		//偽のoperator
-		//////////////////////////////////////
-		bool operator != (Vector2 vec) {
-			bool vectorFlag;
-			if (x != vec.x && y != vec.y) {
-				vectorFlag = true;
-			}
-			else {
-				vectorFlag = false;
-			}
-			return vectorFlag;
-		}
-
-		//////////////////////////////////////
-		//真のoperator
-		//////////////////////////////////////
-		bool operator == (Vector2 vec) {
-			bool vectorFlag;
-			if (x == vec.x && y == vec.y) {
-				vectorFlag = true;
-			}
-			else {
-				vectorFlag = false;
-			}
-			return vectorFlag;
-		}
-
-		//////////////////////////////////////
-		//乗算のoperator
-		//ベクトル同士の乗算はご法度だそうです
-		//////////////////////////////////////
-		Vector2 operator * (int number) {
-			x = x * number;
-			y = y * number;
-			return *this;
-		}
-		Vector2 operator * (float number) {
-			x = x * number;
-			y = y * number;
-			return *this;
-		}
-
-		//////////////////////////////////////
-		//除法のoperator
-		//ベクトル同士の除法もご法度だそうです
-		//////////////////////////////////////
-		Vector2 operator / (int number) {
-			x = x / number;
-			y = y / number;
-			return *this;
-		}
-		Vector2 operator / (float number) {
-			x = x / number;
-			y = y / number;
-			return *this;
-		}
+		//各オペレータ
+		Vector2 operator +(Vector2);
+		void operator +=(Vector2);
+		Vector2 operator +(int);
+		void operator +=(int);
+		Vector2 operator +(float);
+		void operator +=(float);
+		Vector2 operator -(Vector2);
+		void operator -=(Vector2);
+		Vector2 operator -(int);
+		void operator -=(int);
+		Vector2 operator -(float);
+		void operator -=(float);
+		Vector2 operator *(int);
+		void operator *=(int);
+		Vector2 operator *(float);
+		void operator *=(float);
+		Vector2 operator /(int);
+		void operator /=(int);
+		Vector2 operator /(float);
+		void operator /=(float);
+		void operator =(Vector2);
+		bool operator ==(Vector2);
+		bool operator !=(Vector2);
 
 	};
 

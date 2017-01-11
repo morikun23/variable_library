@@ -17,6 +17,9 @@ const Vector4 Vector4::ONE = Vector4(1, 1, 1, 1);
 Vector4::Vector4() {
 	x = y = z = w = 0;
 }
+Vector4::Vector4(int xx, int yy, int zz,int ww) {
+	x = xx; y = yy; z = zz; w = ww;
+}
 Vector4::Vector4(float xx, float yy, float zz, float ww) {
 	x = xx; y = yy; z = zz; w = ww;
 }
@@ -28,6 +31,9 @@ Vector4::~Vector4() {
 //更新(セット)
 void Vector4::Set(float xx, float yy, float zz, float ww) {
 	x = xx; y = yy; z = zz; w = ww;
+}
+void Vector4::Set(Vector4 vec) {
+	x = vec.x; y = vec.y; z = vec.z; w = vec.w;
 }
 
 //正規化
@@ -117,4 +123,151 @@ float VectorLength(Vector4 *vec) {
 }
 float VectorLength(Vector4 vec) {
 	return sqrt(vec.x * vec.x + vec.y * vec.y + vec.z * vec.z + vec.w * vec.w);
+}
+
+//各オペレータ
+Vector4 Vector4::operator +(Vector4 vec) {
+	this->x = this->x + vec.x;
+	this->y = this->y + vec.y;
+	this->z = this->z + vec.z;
+	this->w = this->w + vec.w;
+	return *this;
+}
+
+void Vector4::operator +=(Vector4 vec) {
+	*this = *this + vec;
+}
+
+Vector4 Vector4::operator +(int num) {
+	this->x = this->x + num;
+	this->y = this->y + num;
+	this->z = this->z + num;
+	this->w = this->w + num;
+	return *this;
+}
+
+void Vector4::operator +=(int num) {
+	*this = *this + num;
+}
+
+Vector4 Vector4::operator +(float num) {
+	this->x = this->x + num;
+	this->y = this->y + num;
+	this->z = this->z + num;
+	this->w = this->w + num;
+	return *this;
+}
+
+void Vector4::operator +=(float num) {
+	*this = *this + num;
+}
+
+Vector4 Vector4::operator -(Vector4 vec) {
+	this->x = this->x - vec.x;
+	this->y = this->y - vec.y;
+	this->z = this->z - vec.z;
+	this->w = this->w - vec.w;
+	return *this;
+}
+
+void Vector4::operator -=(Vector4 vec) {
+	*this = *this - vec;
+}
+
+Vector4 Vector4::operator -(int num) {
+	this->x = this->x - num;
+	this->y = this->y - num;
+	this->z = this->z - num;
+	this->w = this->w - num;
+	return *this;
+}
+
+void Vector4::operator -=(int num) {
+	*this = *this - num;
+}
+
+Vector4 Vector4::operator -(float num) {
+	this->x = this->x - num;
+	this->y = this->y - num;
+	this->z = this->z - num;
+	this->w = this->w - num;
+	return *this;
+}
+
+void Vector4::operator -=(float num) {
+	*this = *this - num;
+}
+
+Vector4 Vector4::operator *(int num) {
+	this->x = this->x * num;
+	this->y = this->y * num;
+	this->z = this->z * num;
+	this->w = this->w * num;
+	return *this;
+}
+
+void Vector4::operator *=(int num) {
+	*this = *this * num;
+}
+
+Vector4 Vector4::operator *(float num) {
+	this->x = this->x * num;
+	this->y = this->y * num;
+	this->z = this->z * num;
+	this->w = this->w * num;
+	return *this;
+}
+
+void Vector4::operator *=(float num) {
+	*this = *this * num;
+}
+
+Vector4 Vector4::operator /(int num) {
+	this->x = this->x / num;
+	this->y = this->y / num;
+	this->z = this->z / num;
+	this->w = this->w / num;
+	return *this;
+}
+
+void Vector4::operator /=(int num) {
+	*this = *this / num;
+}
+
+Vector4 Vector4::operator /(float num) {
+	this->x = this->x / num;
+	this->y = this->y / num;
+	this->z = this->z / num;
+	this->w = this->w / num;
+	return *this;
+}
+
+void Vector4::operator /=(float num) {
+	*this = *this / num;
+}
+
+void Vector4::operator =(Vector4 vec) {
+	this->Set(vec);
+}
+
+bool Vector4::operator !=(Vector4 vec) {
+	bool vectorFlag;
+	if (this->x != vec.x && this->y != vec.y && this->z != vec.z && this->w != vec.w) {
+		vectorFlag = true;
+	}
+	else {
+		vectorFlag = false;
+	}
+	return vectorFlag;
+}
+
+bool Vector4::operator ==(Vector4 vec) {
+	bool vectorFlag;
+	if (this->x == vec.x && this->y == vec.y && this->z == vec.z && this->w == vec.w) {
+		vectorFlag = true;
+	}
+	else {
+		vectorFlag = false;
+	}
+	return vectorFlag;
 }
