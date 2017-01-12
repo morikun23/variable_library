@@ -17,6 +17,9 @@ const Vector2 Vector2::ONE = Vector2(1,1);
 Vector2::Vector2() {
 	x = y = 0;
 }
+Vector2::Vector2(int xx, int yy) {
+	x = xx; y = yy;
+}
 Vector2::Vector2(float xx, float yy) {
 	x = xx; y = yy;
 }
@@ -28,6 +31,9 @@ Vector2::~Vector2() {
 //更新(セット)
 void Vector2::Set(float xx,float yy) {
 	x = xx; y = yy;
+}
+void Vector2::Set(Vector2 vec) {
+	x = vec.x; y = vec.y;
 }
 
 //正規化
@@ -108,4 +114,131 @@ float VectorLength(Vector2 *vec) {
 }
 float VectorLength(Vector2 vec) {
 	return sqrt(vec.x * vec.x + vec.y * vec.y);
+}
+
+//各オペレータ
+Vector2 Vector2::operator +(Vector2 vec) {
+	this->x = this->x + vec.x;
+	this->y = this->y + vec.y;
+	return *this;
+}
+
+void Vector2::operator +=(Vector2 vec) {
+	*this = *this + vec;
+}
+
+Vector2 Vector2::operator +(int num) {
+	this->x = this->x + num;
+	this->y = this->y + num;
+	return *this;
+}
+
+void Vector2::operator +=(int num) {
+	*this = *this + num;
+}
+
+Vector2 Vector2::operator +(float num) {
+	this->x = this->x + num;
+	this->y = this->y + num;
+	return *this;
+}
+
+void Vector2::operator +=(float num) {
+	*this = *this + num;
+}
+
+Vector2 Vector2::operator -(Vector2 vec) {
+	this->x = this->x - vec.x;
+	this->y = this->y - vec.y;
+	return *this;
+}
+
+void Vector2::operator -=(Vector2 vec) {
+	*this = *this - vec;
+}
+
+Vector2 Vector2::operator -(int num) {
+	this->x = this->x - num;
+	this->y = this->y - num;
+	return *this;
+}
+
+void Vector2::operator -=(int num) {
+	*this = *this - num;
+}
+
+Vector2 Vector2::operator -(float num) {
+	this->x = this->x - num;
+	this->y = this->y - num;
+	return *this;
+}
+
+void Vector2::operator -=(float num) {
+	*this = *this - num;
+}
+
+Vector2 Vector2::operator * (int num) {
+	this->x = this->x * num;
+	this->y = this->y * num;
+	return *this;
+}
+
+void Vector2::operator *=(int num) {
+	*this = *this * num;
+}
+
+Vector2 Vector2::operator *(float num) {
+	this->x = this->x * num;
+	this->y = this->y * num;
+	return *this;
+}
+
+void Vector2::operator *=(float num) {
+	*this = *this * num;
+}
+
+Vector2 Vector2::operator /(int num) {
+	this->x = this->x / num;
+	this->y = this->y / num;
+	return *this;
+}
+
+void Vector2::operator /=(int num) {
+	*this = *this / num;
+}
+
+Vector2 Vector2::operator /(float num) {
+	this->x = this->x / num;
+	this->y = this->y / num;
+	return *this;
+}
+
+void Vector2::operator /=(float num) {
+	*this = *this / num;
+}
+
+void Vector2::operator =(Vector2 vec) {
+	this->Set(vec);
+}
+
+bool Vector2::operator !=(Vector2 vec) {
+	bool vectorFlag;
+	if (this->x != vec.x && this->y != vec.y) {
+		vectorFlag = true;
+	}
+	else {
+		vectorFlag = false;
+	}
+	return vectorFlag;
+}
+
+bool Vector2::operator ==(Vector2 vec) {
+	bool vectorFlag;
+	if (this->x == vec.x && this->y == vec.y) {
+		vectorFlag = true;
+	}
+	else {
+		vectorFlag = false;
+	}
+	return vectorFlag;
 }

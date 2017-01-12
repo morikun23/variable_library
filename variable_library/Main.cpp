@@ -1,4 +1,5 @@
 #include "Main.h"
+#include"Quaternion.h"
 using namespace variableNS;
 using namespace std;
 
@@ -36,6 +37,15 @@ void Main::Load(){
 //–ˆƒtƒŒ[ƒ€ŒÄ‚Ño‚³‚ê‚Ü‚·
 //////////////////////////////////
 void Main::Update(){
+
+	Quaternion one(1, 1, 1, 1);
+	Quaternion two(3, 2, 4, 1);
+	Quaternion newQ(0, 0, 0, 0);
+
+	newQ = one * two;
+
+	cout << newQ.w << " " << newQ.x << " " << newQ.y << " " << newQ.z << endl;
+
 	return;
 }
 
