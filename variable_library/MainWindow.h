@@ -19,7 +19,6 @@ using namespace variableNS;
 namespace variableNS {
 	class MainWindow : WindowBase {
 	private:
-		
 	public:
 		//////////////////////////////////
 		//コンストラクタ
@@ -27,7 +26,7 @@ namespace variableNS {
 		MainWindow();
 		~MainWindow();
 
-		 LRESULT CALLBACK WindowProcedure(HWND, UINT, WPARAM, LPARAM) override;
+		LRESULT CALLBACK WindowProcedure(HWND, UINT, WPARAM, LPARAM) override;
 
 	};
 }

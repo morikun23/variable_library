@@ -9,12 +9,16 @@
 //			ひな形としても使用できます。
 //更新	　：
 //H29/01/08：クラスの作成
+//H29/01/11：継承元を公開メンバにしました。
+//			 これによって、外部から抽象インターフェイスを
+//			 参照できるようになりました。
 ////////////////////////////////////////
 #include "Scene.h"
+#include <iostream>
 
 using namespace variableNS;
 
-class DefaultScene : Scene {
+class DefaultScene : public Scene {
 	
 	//////////////////////////////
 	//シーン開始

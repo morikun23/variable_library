@@ -12,7 +12,8 @@
 ///////////////////////////////////////////
 #include <Windows.h>
 #include "MainWindow.h"
-#include"Console.h"
+#include "Console.h"
+#include "SceneManager.h"
 
 using namespace variableNS;
 

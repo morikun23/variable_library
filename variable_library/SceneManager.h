@@ -14,35 +14,53 @@
 //H29/01/08：GetCurrentScene関数を修正
 //			 ※再生中のSceneクラスを取得
 //			 　→再生中のSceneクラスのアドレスを取得
+//H29/01/11：Singleton構成に修正
+//H29/01/12：SceneUpdate関数と
+//			 SceneEnd関数を追加
+//			 また、同時にSceneTransition関数のリファクタリングを行い、
+//			 メンバ関数を使用して、二重管理を防ぎました。
 //////////////////////////////////////
 
 #include <Windows.h>
 #include <iostream>
 #include "Scene.h"
-
-using namespace variableNS;
+#include "DefaultScene.h"
 
 namespace variableNS {
 	class SceneManager {
 	private:
-		//登録されたシーン
-		Scene *scene;
 		//現在のシーン
-		int currentScene;
+		Scene *m_currentScene;
 
 	public:
-		///////////////////////////////
-		//シーンの登録
-		///////////////////////////////
-		void SceneRegister(Scene*);
+		
+		//////////////////////////////////
+		//Singleton構造
+		//用意されているインスタンスを取得
+		//return：唯一のインスタンス
+		//////////////////////////////////
+		static SceneManager& Instance() {
+			static SceneManager instance;
+			return instance;
+		}
 
 		///////////////////////////////
-		//シーンの再生
+		//シーンの再生(初回のみ)
 		///////////////////////////////
-		void ScenePlay();
+		void ScenePlay(Scene*);
+		
+		///////////////////////////////
+		//シーンの更新
+		///////////////////////////////
+		void SceneUpdate();
 		
 		//////////////////////////////
-		//シーンの終了
+		//シーンの再初期化を行う
+		//////////////////////////////
+		void SceneReLoad();
+
+		//////////////////////////////
+		//シーンの終了処理を行う
 		//////////////////////////////
 		void SceneEnd();
 

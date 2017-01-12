@@ -1,10 +1,10 @@
 #include "DefaultScene.h"
-
+#
 /////////////////////////////////
 //シーン突入時に呼ばれる
 /////////////////////////////////
 void DefaultScene::OnEnter() {
-
+	std::cout << ">-- \"default scene\" enterd..." << std::endl;
 }
 
 /////////////////////////////////
@@ -18,5 +18,5 @@ void DefaultScene::OnUpdate() {
 //シーン終了時に呼ばれる
 /////////////////////////////////
 void DefaultScene::OnExit() {
-
+	std::cout << ">-- \"default scene\" exited..." << std::endl;
 }
