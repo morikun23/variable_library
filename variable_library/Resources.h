@@ -48,11 +48,19 @@ namespace variableNS {
 
 		
 		///////////////////////////////
-		//　filepointを読み込む関数
+		//　パス指定したファイルを読み込む関数
 		//　引数　:pass　c:から始まるパスを指定する　例）c:root/Reources/Textures/2D/test.txt
-		//　戻り値:未定(今のところはfilepointを戻り値とする)
+		//　戻り値:なし(ざんていとしてほかのstaticメンバに格納する)
+		//			未定(今のところはfilepointを戻り値とする)
 		///////////////////////////////
-		static FILE *Load(char pass[]);
+		static void *Load(char pass[]);
+
+		///////////////////////////////
+		//　パス指定したファイルを読み込む関数
+		//　引数　:pass　c:から始まるパスを指定する　例）c:root/Reources/Textures/2D/test.txt
+		//　戻り値:fp 
+		///////////////////////////////
+		static FILE *FilePointLoad(char pass[]);
 
 		//未完成品
 		/*template<template T>
@@ -62,7 +70,7 @@ namespace variableNS {
 		///////////////////////////////
 		//　読み込んだfilepointをしめる関数
 		//　引数　:filepoint
-		//　戻り値:Errorならtrueを返す　きちんと処理で来たらfalseを返す
+		//　戻り値:Errorならfalseを返す　きちんと処理で来たらtrueを返す
 		///////////////////////////////
 		static bool Close(FILE *fp);
 		

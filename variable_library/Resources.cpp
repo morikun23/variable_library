@@ -9,20 +9,34 @@ using namespace std;
 
 char Resources::text[256];
 
-FILE  *Resources::Load(char pass[]) {
+void *Resources::Load(char pass[]) {
 
 	FILE *fp;
 
 	//パスを入れてpointを読み込む
 	fopen_s(&fp, pass, "r");
 
+	//txt拡張子のファイルを読みこんで格納
+	if (strstr(pass, ".txt") != NULL) {
+		fgets(Resources::text, 256, fp);//　テキストをメンバのtextに格納する
+	}
+	//png拡張子のファイルを格納
+	else if (strstr(pass, ".png") != NULL) {
 
-	fgets(Resources::text, 256, fp);//　テキストをメンバのtextに格納する
+	}
+	//jpng、wav　その他格納する拡張子に応じたものを追加していく予定です
+}
 
+FILE *Resources::FilePointLoad(char pass[]) {
+
+	FILE *fp;
+
+	//パスを入れてpointを読み込む
+	fopen_s(&fp, pass, "r");
 
 	return fp;
-
 }
+
 //templateを使用したversion未完成
 /*template<template T>
 T *Resources::Load(char pass[]) {
@@ -49,12 +63,12 @@ bool Resources::Close(FILE *fp) {
 
 	//Error処理
 	if (fp == NULL) {
-		return true;
+		return false;
 	}
-	//fileを閉じる
+	//filepointを閉じる
 	fclose(fp);
 
-	return false;
+	return true;
 }
 
 
