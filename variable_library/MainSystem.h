@@ -9,8 +9,12 @@
 //H29/01/04：クラスの作成
 //H29/01/05：ウィンドウの生成
 //H29/01/07：コンソールの表示を追加
+//H29/01/16：WinMain関数をMain.cppに移動
+//H29/01/16：hwnd、hInstanceのハンドル２種をそれぞれ追加
 ///////////////////////////////////////////
 #include <Windows.h>
+
+#include "Direct3DManager.h"
 #include "MainWindow.h"
 #include "Console.h"
 #include "SceneManager.h"
@@ -20,14 +24,16 @@ using namespace variableNS;
 class MainSystem {
 
 private:
-	//使用するウィンドウのポインタ
-	MainWindow* window;
-
-public:
+	//インスタンスハンドル
+	HINSTANCE _hInstance;
 	
-	MainSystem() {}
-	~MainSystem() {}
+	//使用するウィンドウのポインタ
+	MainWindow* _window;
+	
+public:
 
+	MainSystem(HINSTANCE arg_hInstance) { _hInstance = arg_hInstance; }
+	virtual ~MainSystem() {};
 	///////////////////////////////
 	//初期化
 	///////////////////////////////

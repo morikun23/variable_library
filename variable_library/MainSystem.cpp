@@ -6,7 +6,7 @@ void MainSystem::Load() {
 	std::cout << ">-- System start up" << std::endl;
 	
 	//ウィンドウの生成
-	window = new MainWindow();
+	_window = new MainWindow(_hInstance);
 	
 	//Direct3Dの初期化
 	//※今後、森田が実装予定
@@ -29,41 +29,6 @@ void MainSystem::Update() {
 void MainSystem::UnLoad() {
 	//シーンの終了
 	SceneManager::Instance().SceneEnd();
-	delete window;
+	delete _window;
 	Console::Instance().Close();
-}
-
-int WINAPI WinMain(HINSTANCE hInstance,HINSTANCE hPrevInstance,LPSTR lpCmdLine,int nCmdShow) {
-	
-	MainSystem system;
-
-	///////////////////////////////
-	//システム起動
-	//各APIなどを初期化
-	/////////////-//////////////////
-	system.Load();
-
-	///////////////////////////////
-	//ゲーム再生
-	//メッセージループによって
-	//毎フレーム更新される
-	///////////////////////////////
-	MSG msg;
-
-	while (true) {
-		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
-			system.Update();
-			if (msg.message == WM_QUIT) break;
-		}
-	}
-
-	//////////////////////////////
-	//システム終了
-	//各APIなどを解放する
-	//////////////////////////////
-	system.UnLoad();
-
-	return 0;
 }
