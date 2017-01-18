@@ -4,14 +4,14 @@
 //デフォルトコンストラクタ
 //ウィンドウのサイズは自動で決まります
 /////////////////////////////////////////
-MainWindow::MainWindow(){
-	m_width = m_DEFAULT_WIDTH;
-	m_height = m_DEFAULT_HEIGHT;
-	m_position = Vector2(200, 100);
-	m_windowStyle = WS_ACTIVECAPTION;
-	m_name = "MainWindow";
-	if (Register()) {
-		Create();
+MainWindow::MainWindow(HINSTANCE arg_hInstance){
+	_width = DEFAULT_WIDTH;
+	_height = DEFAULT_HEIGHT;
+	_position = Vector2(200, 100);
+	_windowStyle = WS_ACTIVECAPTION;
+	_name = "MainWindow";
+	if (Register(arg_hInstance)) {
+		Create(arg_hInstance);
 		Open();
 	}
 }
@@ -36,4 +36,3 @@ LRESULT CALLBACK MainWindow::WindowProcedure(HWND hwnd, UINT uMsg, WPARAM wParam
 	}
 	return DefWindowProc(hwnd, uMsg, wParam, lParam);
 }
-

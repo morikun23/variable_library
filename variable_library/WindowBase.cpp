@@ -3,7 +3,7 @@
 ////////////////////////////////
 //ウィンドウを登録する
 ////////////////////////////////
-bool WindowBase::Register() {
+bool WindowBase::Register(HINSTANCE arg_hInstance) {
 	WNDCLASSEX wcex;
 
 	wcex.cbSize = sizeof(wcex);
@@ -11,12 +11,12 @@ bool WindowBase::Register() {
 	wcex.lpfnWndProc = GetWindowProcedure;
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
-	wcex.hInstance = GetModuleHandle(NULL);
+	wcex.hInstance = arg_hInstance;
 	wcex.hIcon = NULL;
 	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)GetStockObject(GRAY_BRUSH);
 	wcex.lpszMenuName = NULL;
-	wcex.lpszClassName = m_name.c_str();
+	wcex.lpszClassName = _name.c_str();
 	wcex.hIconSm = NULL;
 	
 	int result = RegisterClassEx(&wcex);
@@ -30,35 +30,35 @@ bool WindowBase::Register() {
 //////////////////////////////
 //ウィンドウを生成する
 //////////////////////////////
-bool WindowBase::Create() {
-	m_handle = CreateWindowEx(
-		m_windowStyle,				//拡張ウィンドウスタイル
-		m_name.c_str(),				//クラス名
-		m_name.c_str(),				//ウィンドウ名
+bool WindowBase::Create(HINSTANCE arg_hInstance) {
+	_handle = CreateWindowEx(
+		_windowStyle,				//拡張ウィンドウスタイル
+		_name.c_str(),				//クラス名
+		_name.c_str(),				//ウィンドウ名
 		WS_OVERLAPPEDWINDOW,		//ウィンドウスタイル
-		(int)m_position.x,			//ウィンドウのx座標
-		(int)m_position.y,			//ウィンドウのy座標
-		m_width,					//ウィンドウの幅
-		m_height,					//ウィンドウの高さ
+		(int)_position.x,			//ウィンドウのx座標
+		(int)_position.y,			//ウィンドウのy座標
+		_width,					//ウィンドウの幅
+		_height,					//ウィンドウの高さ
 		(HWND)NULL,					//親ウィンドウのハンドル
 		(HMENU)NULL,				//メニューハンドル
-		GetModuleHandle(NULL),		//アプリケーションインスタンスのハンドル
+		arg_hInstance,		//アプリケーションインスタンスのハンドル
 		this						//ウィンドウ作成データ
 		);
 	
-	if (m_handle) {
+	if (_handle) {
 		std::cout << ">-- window created" << std::endl;
 	}
 
-	return m_handle;
+	return _handle;
 }
 
 //////////////////////////////////////
 //ウィンドウを開いて表示する
 //////////////////////////////////////
 void WindowBase::Open() {
-	ShowWindow(m_handle, SW_SHOW);
-	UpdateWindow(m_handle);
+	ShowWindow(_handle, SW_SHOW);
+	UpdateWindow(_handle);
 	std::cout << ">-- window opend" << std::endl;
 }
 
@@ -66,38 +66,37 @@ void WindowBase::Open() {
 //ウィンドウを閉じる
 /////////////////////////////////////
 void WindowBase::Close() {
-	DestroyWindow(m_handle);
-	UnregisterClass(m_name.c_str(), GetModuleHandle(NULL));
+	DestroyWindow(_handle);
+	UnregisterClass(_name.c_str(), GetModuleHandle(NULL));
 	std::cout << ">-- window closed" << std::endl;
 }
 ///////////////////////////////////////
 //ウィンドウプロシージャ
 ///////////////////////////////////////
-LRESULT CALLBACK WindowBase::WindowProcedure(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-	switch (uMsg)
-	{
+LRESULT CALLBACK WindowBase::WindowProcedure(HWND arg_hWnd, UINT arg_uMsg, WPARAM arg_wParam, LPARAM arg_lParam) {
+	switch (arg_uMsg){
 	case WM_CREATE:
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
 	}
-	return DefWindowProc(m_handle, uMsg, wParam, lParam);
+	return DefWindowProc(_handle, arg_uMsg, arg_wParam, arg_lParam);
 }
 ///////////////////////////////////////
 //ウィンドウプロシージャを取得
 ///////////////////////////////////////
-LRESULT CALLBACK WindowBase::GetWindowProcedure(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+LRESULT CALLBACK WindowBase::GetWindowProcedure(HWND arg_hWnd, UINT arg_uMsg, WPARAM arg_wParam, LPARAM arg_lParam) {
 	
-	WindowBase* window = (WindowBase*)GetWindowLong(hwnd,GWLP_USERDATA);
+	WindowBase* window = (WindowBase*)GetWindowLong(arg_hWnd,GWLP_USERDATA);
 	if (window) {
-		return window->WindowProcedure(hwnd, uMsg, wParam, lParam);
+		return window->WindowProcedure(arg_hWnd, arg_uMsg, arg_wParam, arg_lParam);
 	}
-	return DefWindowProc(hwnd, uMsg, wParam, lParam);
+	return DefWindowProc(arg_hWnd, arg_uMsg, arg_wParam, arg_lParam);
 }
 
 //////////////////////////////////////
 //ウィンドウハンドルを取得
 //////////////////////////////////////
 HWND WindowBase::GetHandle() {
-	return m_handle;
+	return _handle;
 }

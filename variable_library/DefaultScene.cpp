@@ -4,7 +4,7 @@
 //ƒV[ƒ““Ë“ü‚ÉŒÄ‚Î‚ê‚é
 /////////////////////////////////
 void DefaultScene::OnEnter() {
-	std::cout << ">-- \"default scene\" enterd..." << std::endl;
+	std::cout << ">-- \"default scene\" entered..." << std::endl;
 }
 
 /////////////////////////////////

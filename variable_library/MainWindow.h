@@ -9,6 +9,8 @@
 //　　　　　扱われます。
 //H29/01/04：クラスの作成
 //H29/01/05：ウィンドウプロシージャを追加
+//H29/01/16：WindowBaseをpublic にして、
+//			 外部クラスからアクセスできるようにしました。
 ////////////////////////////////////////
 
 #include <Windows.h>
@@ -17,14 +19,14 @@
 using namespace variableNS;
 
 namespace variableNS {
-	class MainWindow : WindowBase {
+	class MainWindow : public WindowBase {
 	private:
 	public:
 		//////////////////////////////////
 		//コンストラクタ
 		//////////////////////////////////
-		MainWindow();
-		~MainWindow();
+		MainWindow(HINSTANCE);
+		virtual ~MainWindow();
 
 		LRESULT CALLBACK WindowProcedure(HWND, UINT, WPARAM, LPARAM) override;
 
