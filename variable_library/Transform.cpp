@@ -23,6 +23,40 @@ Transform::~Transform() {
 
 }
 
+//任意軸回転四元数
+void Transform::RotateAxis(Vector3 vec, float angle) {
+	Quaternion out;
+	vec.Normalize();
+
+	RotateAxis(vec.x,vec.y,vec.z, angle);
+
+}
+void Transform::RotateAxis(float x, float y, float z, float angle) {
+
+	Quaternion out;
+	Quaternion R, P, Q;
+
+	//Pには座標を入れる(Position)
+	P.x = this->position.x;
+	P.y = this->position.y;
+	P.z = this->position.z;
+	P.w = 0;
+
+	Q.x = x * sin(angle / 2);
+	Q.y = y * sin(angle / 2);
+	Q.z = z * sin(angle / 2);
+	Q.w = cos(angle / 2);
+
+	R.x = -x * sin(angle / 2);
+	R.y = -y * sin(angle / 2);
+	R.z = -z * sin(angle / 2);
+	R.w = cos(angle / 2);
+
+	out = R*P*Q;
+
+	rotation = out;
+}
+
 //ワールドマトリクスを作る
 Matrix Transform::MakeWorldTransform() {
 	
