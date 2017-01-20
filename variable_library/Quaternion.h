@@ -20,6 +20,7 @@ namespace variableNS {
 		
 	public:
 		float x, y, z, w;
+		const Vector3 euler;
 
 		Quaternion();
 		Quaternion(int xx, int yy, int zz, int ww);
@@ -34,9 +35,9 @@ namespace variableNS {
 
 
 		//////////////////////////////////////////////
-		//四元数の絶対値を返す(ノルムと呼ばれる)
+		//四元数の長さを返す(ノルムと呼ばれる)
 		//////////////////////////////////////////////
-		float Norm();
+		float Length();
 
 
 		//////////////////////////////////////////////
@@ -47,14 +48,25 @@ namespace variableNS {
 
 
 		//////////////////////////////////////////////
-		//オイラー角で回転
-		//vec : x,y,zの三元数
+		//任意軸のまわりを回転する四元数を返す
+		//vec : 軸
+		//x,y,z :上記と同義
+		//angle : 回転角度
 		//////////////////////////////////////////////
-		void EulerAngles(Vector3 vec);
+		//Quaternion RotateAxis(Vector3 vec,float angle);
+		//Quaternion RotateAxis(float x, float y, float z,float angle);
+
+
+		//////////////////////////////////////////////
+		//四元数を三元数に変換する
+		//q : 変換したい四元数
+		//////////////////////////////////////////////
+		//Vector3 ToVector3();
 
 
 		//各オペレータ
 		void operator =(Quaternion);
+		void operator =(Vector3);
 		Quaternion operator *(Quaternion);
 		void operator *=(Quaternion);
 		Quaternion operator +(Quaternion);
@@ -65,5 +77,6 @@ namespace variableNS {
 		bool operator !=(Quaternion);
 	};
 }
+
 
 #endif
