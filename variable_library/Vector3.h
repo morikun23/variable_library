@@ -10,6 +10,7 @@
 //　　　：H28/12/12/　リファクタリング、Set関数のVectorを引数にとった物を追加
 //　　　：H29/01/10/　オペレータの見直しと記述場所の変更
 //　　　：H29/01/19/  クォータニオンへの変換関数を追加
+//　　　：H29/01/20/　メンバ変数及び、メンバ関数内での引数の名前を変更
 //////////////////////////////////////////////////////////////////
 
 #include"Quaternion.h"
@@ -19,7 +20,7 @@ namespace variableNS {
 	class Vector3 {
 
 	public:
-		float x, y, z;
+		float _x, _y, _z;
 
 
 		///////////////////////////////////////
@@ -40,8 +41,8 @@ namespace variableNS {
 		//xx : ｘ座標の初期値
 		//yy : ｙ座標の初期値
 		///////////////////////////////////////
-		Vector3(int xx, int yy, int zz);
-		Vector3(float xx, float yy,float zz);	
+		Vector3(int arg_x, int arg_y, int arg_z);
+		Vector3(float arg_x, float arg_y,float arg_z);
 
 
 		//////////////////////////////////////
@@ -55,8 +56,8 @@ namespace variableNS {
 		//yy : 代入するｙ座標
 		//vec : 代入するx,y,z成分を持ったVector3
 		//////////////////////////////////////
-		void Set(float xx, float yy, float zz);
-		void Set(Vector3 vec);
+		void Set(float arg_x, float arg_y, float arg_z);
+		void Set(Vector3 arg_vec);
 
 
 		//////////////////////////////////////
@@ -70,7 +71,7 @@ namespace variableNS {
 		//vec1 : 一線目のVector3
 		//vec2 : 二線目のVector3
 		//////////////////////////////////////
-		static float Dot(Vector3 vec1, Vector3 vec2);
+		static float Dot(Vector3 arg_vec1, Vector3 arg_vec2);
 
 
 		//////////////////////////////////////
@@ -78,7 +79,7 @@ namespace variableNS {
 		//vec1 : 一線目のVector3
 		//vec2 : 二線目のVector3
 		//////////////////////////////////////
-		static Vector3 Cross(Vector3 vec1, Vector3 vec2);
+		static Vector3 Cross(Vector3 arg_vec1, Vector3 arg_vec2);
 
 
 		//////////////////////////////////////
@@ -86,7 +87,7 @@ namespace variableNS {
 		//vec1 : 一線目のVector3
 		//vec2 : 二線目のVector3
 		//////////////////////////////////////
-		static float Angle(Vector3 vec1, Vector3 vec2);
+		static float Angle(Vector3 arg_vec1, Vector3 arg_vec2);
 
 
 		//////////////////////////////////////
@@ -94,7 +95,7 @@ namespace variableNS {
 		//vec1 : 一線目のVector3
 		//vec2 : 二線目のVector3
 		//////////////////////////////////////
-		static float Distance(Vector3 vec1, Vector3 vec2);
+		static float Distance(Vector3 arg_vec1, Vector3 arg_vec2);
 
 
 		//////////////////////////////////////
@@ -102,7 +103,7 @@ namespace variableNS {
 		//vec1 : 一線目のVector3
 		//vec2 : 二線目のVector3
 		//////////////////////////////////////
-		static Vector3 Reflect(Vector3 vec1, Vector3 vec2);
+		static Vector3 Reflect(Vector3 arg_vec1, Vector3 arg_vec2);
 
 
 		//////////////////////////////////////
@@ -112,7 +113,7 @@ namespace variableNS {
 		//vec3 : 三線目のVector3
 		//vec4 : 四線目のVector3
 		//////////////////////////////////////
-		static bool IsCross(Vector3 vec1, Vector3 vec2, Vector3 vec3, Vector3 vec4);
+		static bool IsCross(Vector3 arg_vec1, Vector3 arg_vec2, Vector3 arg_vec3, Vector3 arg_vec4);
 
 
 		//////////////////////////////////////////////
