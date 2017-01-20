@@ -11,6 +11,7 @@
 
 #include"Vector3.h"
 #include"Vector4.h"
+#include"Quaternion.h"
 
 namespace variableNS {
 
@@ -40,13 +41,19 @@ namespace variableNS {
 		//マトリクスを位置行列に変える
 		//vec : 位置を表す三元数
 		///////////////////////////////////////
-		void VectorToPositionMatrix(Vector3 vec);
+		void ToPositionMatrix(Vector3 vec);
 
 		///////////////////////////////////////
 		//マトリクスを縮小拡大行列に変える
 		//vec : 大きさを表す三元数
 		///////////////////////////////////////
-		void VectorToScaleMatrix(Vector3 vec);
+		void ToScaleMatrix(Vector3 vec);
+
+		///////////////////////////////////////
+		//マトリクスを回転行列に変える
+		//quat : 大きさを表す四元数
+		///////////////////////////////////////
+		void ToRotateMatrix(Quaternion quat);
 
 		//各オペレータ
 		Matrix operator +(Matrix);

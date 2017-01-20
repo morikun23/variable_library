@@ -19,7 +19,7 @@ void Matrix::Identity() {
 }
 
 //à íuïœä∑
-void Matrix::VectorToPositionMatrix(Vector3 vec) {
+void Matrix::ToPositionMatrix(Vector3 vec) {
 	this->Identity();
 	m30 = vec.x;
 	m31 = vec.y;
@@ -27,11 +27,29 @@ void Matrix::VectorToPositionMatrix(Vector3 vec) {
 }
 
 //èkè¨ägëÂïœä∑
-void Matrix::VectorToScaleMatrix(Vector3 vec) {
+void Matrix::ToScaleMatrix(Vector3 vec) {
 	this->Identity();
 	m00 = vec.x;
 	m11 = vec.y;
 	m22 = vec.z;
+}
+
+//âÒì]ïœä∑
+void Matrix::ToRotateMatrix(Quaternion quat) {
+	this->Identity();
+	
+	m00 = 1 - (2 * (quat.y * quat.y)) - (2 * (quat.z * quat.z));
+	m01 = (2 * quat.x * quat.y) + (2 * quat.w * quat.z);
+	m02 = (2 * quat.x * quat.z) - (2 * quat.w * quat.y);
+
+	m10 = (2 * quat.x * quat.y) - (2 * quat.w * quat.z);
+	m11 = 1 - (2 * (quat.x * quat.x)) - (2 * (quat.z * quat.z));
+    m12 = (2 * quat.y * quat.z) + (2 * quat.w * quat.x);
+
+	m20 = (2 * quat.x * quat.z) + (2 * quat.w * quat.y);
+	m21 = (2 * quat.y * quat.z) - (2 * quat.w * quat.x);
+	m22 = 1 - (2 * (quat.x * quat.x)) - (2 * (quat.y * quat.y));
+
 }
 
 //ÉIÇÿÉåÅ[É^
