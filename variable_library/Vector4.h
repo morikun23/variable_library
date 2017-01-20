@@ -9,6 +9,7 @@
 //　　　：H28/12/11/　外積を求める関数を追加
 //　　　：H28/12/12/　リファクタリング、Set関数のVectorを引数にとった物を追加
 //　　　：H29/01/10/　オペレータの見直しと記述場所の変更
+//　　　：H29/01/20/　メンバ変数及び、メンバ関数内での引数の名前を変更
 //////////////////////////////////////////////////////////////////
 
 namespace variableNS {
@@ -17,7 +18,7 @@ namespace variableNS {
 
 	public:
 		//Vector4(x,y,z,w)
-		float x, y, z, w;
+		float _x, _y, _z, _w;
 
 
 		///////////////////////////////////////
@@ -38,8 +39,8 @@ namespace variableNS {
 		//xx : ｘ座標の初期値
 		//yy : ｙ座標の初期値
 		///////////////////////////////////////
-		Vector4(int xx, int yy, int zz,int ww);
-		Vector4(float xx, float yy, float zz,float ww);
+		Vector4(int arg_x, int arg_y, int arg_z,int arg_w);
+		Vector4(float arg_x, float arg_y, float arg_z,float arg_w);
 
 
 		//////////////////////////////////////
@@ -53,8 +54,8 @@ namespace variableNS {
 		//yy : 代入するｙ座標
 		//vec : 代入するx,y,z,w成分を持ったVector4
 		//////////////////////////////////////
-		void Set(float xx, float yy, float zz, float ww);
-		void Set(Vector4 vec);
+		void Set(float arg_x, float arg_y, float arg_z, float arg_w);
+		void Set(Vector4 arg_vec);
 
 
 		//////////////////////////////////////
@@ -68,7 +69,7 @@ namespace variableNS {
 		//vec1 : 一線目のVector4
 		//vec2 : 二線目のVector4
 		//////////////////////////////////////
-		static float Dot(Vector4 vec1, Vector4 vec2);
+		static float Dot(Vector4 arg_vec1, Vector4 arg_vec2);
 
 
 		//////////////////////////////////////
@@ -76,7 +77,7 @@ namespace variableNS {
 		//vec1 : 一線目のVector4
 		//vec2 : 二線目のVector4
 		//////////////////////////////////////
-		static Vector4 Cross(Vector4 vec1, Vector4 vec2);
+		static Vector4 Cross(Vector4 arg_vec1, Vector4 arg_vec2);
 
 
 		//////////////////////////////////////
@@ -84,7 +85,7 @@ namespace variableNS {
 		//vec1 : 一線目のVector4
 		//vec2 : 二線目のVector4
 		//////////////////////////////////////
-		static float Angle(Vector4 vec1, Vector4 vec2);
+		static float Angle(Vector4 arg_vec1, Vector4 arg_vec2);
 
 
 		//////////////////////////////////////
@@ -92,7 +93,7 @@ namespace variableNS {
 		//vec1 : 一線目のVector4
 		//vec2 : 二線目のVector4
 		//////////////////////////////////////
-		static float Distance(Vector4 vec1, Vector4 vec2);
+		static float Distance(Vector4 arg_vec1, Vector4 arg_vec2);
 
 
 		//////////////////////////////////////
@@ -100,7 +101,7 @@ namespace variableNS {
 		//vec1 : 一線目のVector4
 		//vec2 : 二線目のVector4
 		//////////////////////////////////////
-		static Vector4 Reflect(Vector4 vec1, Vector4 vec2);
+		static Vector4 Reflect(Vector4 arg_vec1, Vector4 arg_vec2);
 
 
 		//////////////////////////////////////
@@ -110,7 +111,7 @@ namespace variableNS {
 		//vec3 : 三線目のVector4
 		//vec4 : 四線目のVector4
 		//////////////////////////////////////
-		static bool IsCross(Vector4 vec1, Vector4 vec2, Vector4 vec3, Vector4 vec4);
+		static bool IsCross(Vector4 arg_vec1, Vector4 arg_vec2, Vector4 arg_vec3, Vector4 arg_vec4);
 
 
 		//各オペレータ
