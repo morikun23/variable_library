@@ -118,6 +118,7 @@
     <ClCompile Include="DefaultScene.cpp" />
     <ClCompile Include="Direct3DManager.cpp" />
     <ClCompile Include="Frame.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="MainSystem.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -132,6 +133,7 @@
     <ClInclude Include="DefaultScene.h" />
     <ClInclude Include="Direct3DManager.h" />
     <ClInclude Include="Frame.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="MainSystem.h" />
     <ClInclude Include="MainWindow.h" />
     <ClInclude Include="Scene.h" />

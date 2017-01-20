@@ -1,6 +1,10 @@
 #include"MainSystem.h"
+#include"Input.h"
 
 void MainSystem::Load() {
+	HINSTANCE hinstance;
+	HWND hwnd;
+	
 	//デバッグ用コンソールの表示
 	Console::Instance().Open();
 	std::cout << ">-- System start up" << std::endl;
@@ -13,6 +17,7 @@ void MainSystem::Load() {
 
 	//DirectInputの初期化
 	//今後、小野のクラスから一部統合予定
+	Input::Init(hinstance, hwnd);
 
 	//DirectSoundの初期化
 	//今後、甲斐のクラスから統合予定
