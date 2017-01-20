@@ -1,5 +1,5 @@
-#ifndef MAINWINDOW
-#define MAINWINDOW
+#ifndef MAIN_WINDOW
+#define MAIN_WINDOW
 
 ////////////////////////////////////////
 //ÉNÉâÉXñºÅFMainWindow
@@ -32,4 +32,4 @@ namespace variableNS {
 
 	};
 }
-#endif // !MAINWINDOW
+#endif // !MAIN_WINDOW

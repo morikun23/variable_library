@@ -1,5 +1,5 @@
-#ifndef WindowBase
-#define WINDOWBASE
+#ifndef WINDOW_BASE
+#define WINDOW_BASE
 
 /////////////////////////////////////
 //クラス名：WindowBase
@@ -9,7 +9,10 @@
 //H28/12/22：クラスの作成
 //H29/01/05：WindowProcedureを追加
 //H29/01/08：GetHandle関数を追加
+//H29/01/18：Register、Create関数を修正
+//H29/01/19：GetWidth、GetHeight関数を追加
 ////////////////////////////////////
+
 #include <Windows.h>
 #include <iostream>
 #include"Vector2.h"
@@ -80,6 +83,16 @@ namespace variableNS {
 		//ウィンドウハンドルを取得
 		//////////////////////////////////
 		HWND GetHandle();
+		
+		//////////////////////////////////
+		//ウィンドウの幅を取得
+		//////////////////////////////////
+		int GetWidth();
+
+		//////////////////////////////////
+		//ウィンドウの高さを取得
+		//////////////////////////////////
+		int GetHeight();
 	};
 }
-#endif // !WindowBase
+#endif // !WINDOW_BASE

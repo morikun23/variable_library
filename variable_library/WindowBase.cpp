@@ -100,3 +100,17 @@ LRESULT CALLBACK WindowBase::GetWindowProcedure(HWND arg_hWnd, UINT arg_uMsg, WP
 HWND WindowBase::GetHandle() {
 	return _handle;
 }
+
+//////////////////////////////////////
+//ウィンドウの幅を取得
+//////////////////////////////////////
+int WindowBase::GetWidth() {
+	return _width;
+}
+
+//////////////////////////////////////
+//ウィンドウの高さを取得
+//////////////////////////////////////
+int WindowBase::GetHeight() {
+	return _height;
+}
