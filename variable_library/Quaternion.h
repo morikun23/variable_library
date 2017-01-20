@@ -53,15 +53,15 @@ namespace variableNS {
 		//x,y,z :上記と同義
 		//angle : 回転角度
 		//////////////////////////////////////////////
-		Quaternion RotateAxis(Vector3 vec,float angle);
-		Quaternion RotateAxis(float x, float y, float z,float angle);
+		//Quaternion RotateAxis(Vector3 vec,float angle);
+		//Quaternion RotateAxis(float x, float y, float z,float angle);
 
 
 		//////////////////////////////////////////////
 		//四元数を三元数に変換する
 		//q : 変換したい四元数
 		//////////////////////////////////////////////
-		Vector3 ToVector3();
+		//Vector3 ToVector3();
 
 
 		//各オペレータ

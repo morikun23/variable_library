@@ -70,40 +70,40 @@ void Quaternion::operator =(Quaternion q) {
 }
 
 //îCà”é≤âÒì]élå≥êî
-Quaternion Quaternion::RotateAxis(Vector3 vec, float angle) {
-	Quaternion out;
-	vec.Normalize();
-
-	out = RotateAxis(vec.x,vec.y,vec.z, angle);
-
-	return out;
-}
-Quaternion Quaternion::RotateAxis(float x, float y, float z, float angle) {
-
-	Quaternion out;
-	Quaternion R, P, Q;
-
-	//PÇ…ÇÕç¿ïWÇì¸ÇÍÇÈ(Position)
-	//ïsãÔçáÇ™ãNÇ´ÇÈÇ∆ÇµÇΩÇÁÇ±Ç±
-	P.x = this->x;
-	P.y = this->y;
-	P.z = this->z;
-	P.w = 0;
-
-	Q.x = x * sin(angle / 2);
-	Q.y = y * sin(angle / 2);
-	Q.z = z * sin(angle / 2);
-	Q.w = cos(angle / 2);
-
-	R.x = -x * sin(angle / 2);
-	R.y = -y * sin(angle / 2);
-	R.z = -z * sin(angle / 2);
-	R.w = cos(angle / 2);
-
-	out = R*P*Q;
-
-	return out;
-}
+//Quaternion Quaternion::RotateAxis(Vector3 vec, float angle) {
+//	Quaternion out;
+//	vec.Normalize();
+//
+//	out = RotateAxis(vec.x,vec.y,vec.z, angle);
+//
+//	return out;
+//}
+//Quaternion Quaternion::RotateAxis(float x, float y, float z, float angle) {
+//
+//	Quaternion out;
+//	Quaternion R, P, Q;
+//
+//	//PÇ…ÇÕç¿ïWÇì¸ÇÍÇÈ(Position)
+//	//ïsãÔçáÇ™ãNÇ´ÇÈÇ∆ÇµÇΩÇÁÇ±Ç±
+//	P.x = this->x;
+//	P.y = this->y;
+//	P.z = this->z;
+//	P.w = 0;
+//
+//	Q.x = x * sin(angle / 2);
+//	Q.y = y * sin(angle / 2);
+//	Q.z = z * sin(angle / 2);
+//	Q.w = cos(angle / 2);
+//
+//	R.x = -x * sin(angle / 2);
+//	R.y = -y * sin(angle / 2);
+//	R.z = -z * sin(angle / 2);
+//	R.w = cos(angle / 2);
+//
+//	out = R*P*Q;
+//
+//	return out;
+//}
 
 
 //ÇSÅ®ÇR
