@@ -9,28 +9,36 @@
 //H29/01/15：クラスの作成
 /////////////////////////////////////
 
-#include <d3dx11.h>
+#include <D3D11.h>
 #include <Windows.h>
+#include "WindowBase.h"
 
+#pragma comment(lib,"d3d11.lib")
+#pragma comment(lib,"d3dx11.lib")
 class Direct3DManager {
+private:
+	//ウィンドウ
+	variableNS::WindowBase* _window;
+	//デバイス
+	ID3D11Device* _device = NULL;
+	ID3D11DeviceContext* _deviceContext = NULL;
+
+	//スワップチェーン
+	IDXGISwapChain* _swapChain = NULL;
+	ID3D11RenderTargetView* _renderTargetView = NULL;
 public:
 
-	Direct3DManager(HWND hwnd) {
-		m_handle = hwnd;
+	Direct3DManager(variableNS::WindowBase* arg_window) {
+		_window = arg_window;
 	}
-	virtual ~Direct3DManager() {
-
-	}
-
-	HWND m_handle;
-	ID3D11Device* m_device = NULL;
-	ID3D11DeviceContext* m_deviceContext = NULL;
-	IDXGISwapChain* m_swapChain = NULL;
-	ID3D11RenderTargetView* m_renderTargetView = NULL;
+	virtual ~Direct3DManager() {}
 
 	bool Init();
-
+	bool CreateSwapChainDesc();
+	void CreateRenderTargetView();
+	void CreateViewPort();
 	void Render();
+
 };
 
 
