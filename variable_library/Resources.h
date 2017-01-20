@@ -20,13 +20,20 @@
 ///////////////////////////////////////
 
 #include <stdio.h>
+#include <string.h>
 #include <string>
+#include <fstream>
+#include <iostream>
+#include <iterator>
+#include <Windows.h>
+#include <sstream>
 #include <vector>
 
 
 
 namespace variableNS {
 
+	template<typename T>
 	class Resources {
 
 	private:
@@ -36,12 +43,7 @@ namespace variableNS {
 
 		
 
-		//pointerで取得したtextファイルを読み込むための変数
-		static char text[256];
-
-
 		//texture格納用の変数を実装予定
-		//Actor格納用の変数を実装予定
 		//Sound格納用の変数を実装予定
 		//Effect格納用の変数を実装予定
 		//Font格納用の変数を実装予定
@@ -49,35 +51,26 @@ namespace variableNS {
 		
 		///////////////////////////////
 		//　パス指定したファイルを読み込む関数
-		//　引数　:pass　c:から始まるパスを指定する　例）c:root/Reources/Textures/2D/test.txt
-		//　戻り値:なし(ざんていとしてほかのstaticメンバに格納する)
-		//			未定(今のところはfilepointを戻り値とする)
+		//　引数　:pass　c:から始まるパスを指定する　例）c:root/Reources/←ここまでは省略　　ここからパス指定：Textures/2D/test.txt
+		//　戻り値:指定した型のファイル情報を返す
+		//		　例)stringで.txtだったら　中の文字列をすべて返す　など
 		///////////////////////////////
-		static void *Load(char pass[]);
+		static T Load(char pass[]);
+		
+
+		static T Loads(char pass[]);
 
 		///////////////////////////////
 		//　パス指定したファイルを読み込む関数
 		//　引数　:pass　c:から始まるパスを指定する　例）c:root/Reources/Textures/2D/test.txt
 		//　戻り値:fp 
 		///////////////////////////////
-		static FILE *FilePointLoad(char pass[]);
+		//static FILE *FilePointLoad(char pass[]);
 
-		//未完成品
-		/*template<template T>
-		static T *Load(char pass[]);
-		*/
- 		
-		///////////////////////////////
-		//　読み込んだfilepointをしめる関数
-		//　引数　:filepoint
-		//　戻り値:Errorならfalseを返す　きちんと処理で来たらtrueを返す
-		///////////////////////////////
-		static bool Close(FILE *fp);
 		
 
 	};
 
 }
-
 
 #endif // !RESOURCES
