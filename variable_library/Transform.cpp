@@ -10,16 +10,36 @@ using namespace variableNS;
 Transform::Transform() {
 	position = Vector3::ZERO;
 	scale = Vector3::ONE;
+	rotation.Identity();
 }
 
 Transform::Transform(Vector3 pos, Vector3 sca, Vector3 rota) {
 	position = pos;
 	scale = sca;
+	rotation = rota.ToQuaternion();
 }
 
 Transform::~Transform() {
 
 }
+
+//ワールドマトリクスを作る
+Matrix Transform::MakeWorldTransform() {
+	
+	Matrix out,posMat,scaMat,rotaMat;
+	out.Identity();
+	
+	posMat.ToPositionMatrix(position);
+	scaMat.ToScaleMatrix(scale);
+	rotaMat.ToRotateMatrix(rotation);
+
+	out = out * scaMat;
+	out = out * posMat;
+	out = out * rotaMat;
+
+	return out;
+}
+
 /*
 //角度の加算
 void Transform::Rotate(Vector3 vec3) {
