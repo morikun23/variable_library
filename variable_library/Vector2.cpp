@@ -33,7 +33,7 @@ void Vector2::Set(float arg_x,float arg_y) {
 	_x = arg_x; _y = arg_y;
 }
 void Vector2::Set(Vector2 arg_vec) {
-	_x = arg_vec.x; _y = arg_vec.y;
+	_x = arg_vec._x; _y = arg_vec._y;
 }
 
 //ê≥ãKâª

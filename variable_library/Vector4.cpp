@@ -15,13 +15,13 @@ const Vector4 Vector4::ONE = Vector4(1, 1, 1, 1);
 
 //コンストラクタ
 Vector4::Vector4() {
-	x = y = z = w = 0;
+	_x = _y = _z = _w = 0;
 }
-Vector4::Vector4(int xx, int yy, int zz,int ww) {
-	x = xx; y = yy; z = zz; w = ww;
+Vector4::Vector4(int arg_x, int arg_y, int arg_z,int arg_w) {
+	_x = arg_x; _y = arg_y; _z = arg_z; _w = arg_w;
 }
-Vector4::Vector4(float xx, float yy, float zz, float ww) {
-	x = xx; y = yy; z = zz; w = ww;
+Vector4::Vector4(float arg_x, float arg_y, float arg_z, float arg_w) {
+	_x = arg_x; _y = arg_y; _z = arg_z; _w = arg_w;
 }
 //デストラクタ
 Vector4::~Vector4() {
