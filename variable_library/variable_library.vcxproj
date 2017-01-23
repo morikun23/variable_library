@@ -118,11 +118,6 @@
     <ClCompile Include="DefaultScene.cpp" />
     <ClCompile Include="Direct3DManager.cpp" />
     <ClCompile Include="Frame.cpp" />
-<<<<<<< HEAD
-    <ClCompile Include="Main.cpp" />
-=======
-    <ClCompile Include="Input.cpp" />
->>>>>>> origin/Ono
     <ClCompile Include="MainSystem.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="Matrix.cpp" />
