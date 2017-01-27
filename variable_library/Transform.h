@@ -20,17 +20,17 @@ namespace variableNS{
 
 	public:
 		//位置の値、大きさの値を格納する三元数
-		Vector3 position;
-		Vector3 scale;
+		Vector3 _position;
+		Vector3 _scale;
 
 		//回転の値を格納する四元数(クォータニオン)
-		Quaternion rotation;
+		Quaternion _rotation;
 
 		/////////////////////////////////////////
 		//コンストラクタ、デストラクタ
 		/////////////////////////////////////////
 		Transform();
-		Transform(Vector3 pos,Vector3 sca,Vector3 rota);
+		Transform(Vector3 arg_pos,Vector3 arg_sca,Vector3 arg_rota);
 		virtual ~Transform();
 
 
@@ -40,8 +40,8 @@ namespace variableNS{
 		//x,y,z :上記と同義
 		//angle : 回転角度
 		//////////////////////////////////////////////
-		void RotateAxis(Vector3 vec, float angle);
-		void RotateAxis(float x, float y, float z, float angle);
+		void RotateAxis(Vector3 arg_vec, float arg_angle);
+		void RotateAxis(float arg_x, float arg_y, float arg_z, float arg_angle);
 
 
 		/////////////////////////////////////////

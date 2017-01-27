@@ -8,15 +8,15 @@ using namespace variableNS;
 
 //コンストラクタ、デストラクタ
 Transform::Transform() {
-	position = Vector3::ZERO;
-	scale = Vector3::ONE;
-	rotation.Identity();
+	_position = Vector3::ZERO;
+	_scale = Vector3::ONE;
+	_rotation.Identity();
 }
 
-Transform::Transform(Vector3 pos, Vector3 sca, Vector3 rota) {
-	position = pos;
-	scale = sca;
-	rotation = rota.ToQuaternion();
+Transform::Transform(Vector3 arg_pos, Vector3 arg_sca, Vector3 arg_rota) {
+	_position = arg_pos;
+	_scale = arg_sca;
+	_rotation = arg_rota.ToQuaternion();
 }
 
 Transform::~Transform() {
@@ -24,37 +24,37 @@ Transform::~Transform() {
 }
 
 //任意軸回転四元数
-void Transform::RotateAxis(Vector3 vec, float angle) {
+void Transform::RotateAxis(Vector3 arg_vec, float arg_angle) {
 	Quaternion out;
-	vec.Normalize();
+	arg_vec.Normalize();
 
-	RotateAxis(vec.x,vec.y,vec.z, angle);
+	RotateAxis(arg_vec._x, arg_vec._y, arg_vec._z, arg_angle);
 
 }
-void Transform::RotateAxis(float x, float y, float z, float angle) {
+void Transform::RotateAxis(float arg_x, float arg_y, float arg_z, float arg_angle) {
 
 	Quaternion out;
 	Quaternion R, P, Q;
 
 	//Pには座標を入れる(Position)
-	P.x = this->position.x;
-	P.y = this->position.y;
-	P.z = this->position.z;
-	P.w = 0;
+	P._x = this->_position._x;
+	P._y = this->_position._y;
+	P._z = this->_position._z;
+	P._w = 0;
 
-	Q.x = x * sin(angle / 2);
-	Q.y = y * sin(angle / 2);
-	Q.z = z * sin(angle / 2);
-	Q.w = cos(angle / 2);
+	Q._x = arg_x * sin(arg_angle / 2);
+	Q._y = arg_y * sin(arg_angle / 2);
+	Q._z = arg_z * sin(arg_angle / 2);
+	Q._w = cos(arg_angle / 2);
 
-	R.x = -x * sin(angle / 2);
-	R.y = -y * sin(angle / 2);
-	R.z = -z * sin(angle / 2);
-	R.w = cos(angle / 2);
+	R._x = -arg_x * sin(arg_angle / 2);
+	R._y = -arg_y * sin(arg_angle / 2);
+	R._z = -arg_z * sin(arg_angle / 2);
+	R._w = cos(arg_angle / 2);
 
 	out = R*P*Q;
 
-	rotation = out;
+	_rotation = out;
 }
 
 //ワールドマトリクスを作る
@@ -63,9 +63,9 @@ Matrix Transform::MakeWorldTransform() {
 	Matrix out,posMat,scaMat,rotaMat;
 	out.Identity();
 	
-	posMat.ToPositionMatrix(position);
-	scaMat.ToScaleMatrix(scale);
-	rotaMat.ToRotateMatrix(rotation);
+	posMat.ToPositionMatrix(_position);
+	scaMat.ToScaleMatrix(_scale);
+	rotaMat.ToRotateMatrix(_rotation);
 
 	out = out * scaMat;
 	out = out * posMat;
