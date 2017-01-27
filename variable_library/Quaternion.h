@@ -19,13 +19,13 @@ namespace variableNS {
 		
 		
 	public:
-		float x, y, z, w;
-		const Vector3 euler;
+		float _x, _y, _z, _w;
+		const Vector3 _euler;
 
 		Quaternion();
-		Quaternion(int xx, int yy, int zz, int ww);
-		Quaternion(float xx,float yy,float zz,float ww);
-		Quaternion(Vector4 vec);
+		Quaternion(int arg_x, int arg_y, int arg_z, int arg_w);
+		Quaternion(float arg_x,float arg_y,float arg_z,float arg_w);
+		Quaternion(Vector4 arg_vec);
 		~Quaternion();
 
 		//////////////////////////////////////////////
@@ -44,7 +44,7 @@ namespace variableNS {
 		//値のセット
 		//quaternion : x,y,z,wの三元数
 		//////////////////////////////////////////////
-		void Set(Quaternion quaternion);
+		void Set(Quaternion arg_quat);
 
 
 		//////////////////////////////////////////////
@@ -61,7 +61,7 @@ namespace variableNS {
 		//四元数を三元数に変換する
 		//q : 変換したい四元数
 		//////////////////////////////////////////////
-		//Vector3 ToVector3();
+		Vector3 ToVector3();
 
 
 		//各オペレータ
