@@ -124,7 +124,7 @@ float VectorLength(Vector3 arg_vec) {
 }
 
 //３→４
-Quaternion Vector3::ToQuaternion() {
+/*Quaternion Vector3::ToQuaternion() {
 
 	Quaternion out;
 
@@ -142,7 +142,7 @@ Quaternion Vector3::ToQuaternion() {
 
 	return out;
 
-}
+}*/
 
 //各オペレータ
 Vector3 Vector3::operator +(Vector3 arg_vec) {
