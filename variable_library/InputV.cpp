@@ -1,4 +1,4 @@
-#include"Input.h"
+#include"InputV.h"
 using namespace variableNS;
 using namespace std;
 
@@ -6,7 +6,7 @@ using namespace std;
 
 
 //入力デバイス登録の処理
-void Input::Init(HINSTANCE hInstance,HWND hwnd) {
+void InputV::Init(HINSTANCE hInstance,HWND hwnd) {
 	if (pInput == NULL) {
 		//インターフェイスの取得
 		HRESULT hr;
@@ -54,7 +54,7 @@ void Input::Init(HINSTANCE hInstance,HWND hwnd) {
 	}
 }
 
-void Input::Unregister() {
+void InputV::Unregister() {
 	if (pKeyDevice)
 	{
 		pKeyDevice->Unacquire();
@@ -70,7 +70,7 @@ void Input::Unregister() {
 }
 
 //デバイスからの入力情報の取得の処理
-void Input::Exec()
+void InputV::Exec()
 {
 	if (pKeyDevice) {
 		// 入力の受け付け開始  
@@ -82,7 +82,7 @@ void Input::Exec()
 }
 
 //指定したキーが押されたか判定を返す
-BOOL Input::IsKeyDown(int key)
+BOOL InputV::IsKeyDown(int key)
 {
 	if (pKeyDevice == NULL) return FALSE;
 
