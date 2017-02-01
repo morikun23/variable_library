@@ -14,33 +14,36 @@ namespace variableNS {
 
 	public:
 
+		MatrixBase() {};
+		virtual ~MatrixBase() = 0;
+
 		///////////////////////////////////////
 		//マトリクスの単位化　ほとんどの行列計算の前に必要な処理
 		///////////////////////////////////////
-		virtual void Identity();
+		virtual void Identity() = 0;
 
 		///////////////////////////////////////
 		//マトリクスを位置行列に変える
 		///////////////////////////////////////
-		virtual void ToPositionMatrix();
+		virtual void ToPositionMatrix() = 0;
 
 		///////////////////////////////////////
 		//マトリクスを縮小拡大行列に変える
 		///////////////////////////////////////
-		virtual void ToScaleMatrix();
+		virtual void ToScaleMatrix() = 0;
 
 		///////////////////////////////////////
 		//マトリクスを回転行列に変える
 		///////////////////////////////////////
-		virtual void ToRotateMatrix();
+		virtual void ToRotateMatrix() = 0;
 
 		//各オペレータ
-		virtual MatrixBase operator +(MatrixBase);
-		virtual MatrixBase operator -(MatrixBase);
-		virtual MatrixBase operator *(MatrixBase);
-		virtual void operator +=(MatrixBase);
-		virtual void operator -=(MatrixBase);
-		virtual void operator *=(MatrixBase);
+		virtual MatrixBase operator +(MatrixBase) = 0;
+		virtual MatrixBase operator -(MatrixBase) = 0;
+		virtual MatrixBase operator *(MatrixBase) = 0;
+		virtual void operator +=(MatrixBase) = 0;
+		virtual void operator -=(MatrixBase) = 0;
+		virtual void operator *=(MatrixBase) = 0;
 
 	};
 
