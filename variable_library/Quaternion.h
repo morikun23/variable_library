@@ -20,7 +20,7 @@ namespace variableNS {
 		
 	public:
 		float _x, _y, _z, _w;
-		const Vector3 _euler;
+		//const Vector3 _euler;
 
 		Quaternion();
 		Quaternion(int arg_x, int arg_y, int arg_z, int arg_w);
