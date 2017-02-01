@@ -66,7 +66,7 @@ namespace variableNS {
 
 		//各オペレータ
 		void operator =(Quaternion);
-		void operator =(Vector3);
+		//void operator =(Vector3);
 		Quaternion operator *(Quaternion);
 		void operator *=(Quaternion);
 		Quaternion operator +(Quaternion);
