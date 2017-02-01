@@ -61,12 +61,12 @@ namespace variableNS {
 		//四元数を三元数に変換する
 		//q : 変換したい四元数
 		//////////////////////////////////////////////
-		Vector3 ToVector3();
+		//Vector3 ToVector3();
 
 
 		//各オペレータ
 		void operator =(Quaternion);
-		void operator =(Vector3);
+		//void operator =(Vector3);
 		Quaternion operator *(Quaternion);
 		void operator *=(Quaternion);
 		Quaternion operator +(Quaternion);

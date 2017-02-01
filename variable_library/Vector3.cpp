@@ -124,7 +124,7 @@ float VectorLength(Vector3 arg_vec) {
 }
 
 //３→４
-Quaternion Vector3::ToQuaternion() {
+/*Quaternion Vector3::ToQuaternion() {
 
 	Quaternion out;
 
@@ -135,14 +135,14 @@ Quaternion Vector3::ToQuaternion() {
 	float t4 = cos(this->_y * 0.5f);
 	float t5 = sin(this->_y * 0.5f);
 
-	out.w = t0 * t2 * t4 + t1 * t3 * t5;
-	out.x = t0 * t3 * t4 - t1 * t2 * t5;
-	out.y = t0 * t2 * t5 + t1 * t3 * t4;
-	out.z = t1 * t2 * t4 - t0 * t3 * t5;
+	out._w = t0 * t2 * t4 + t1 * t3 * t5;
+	out._x = t0 * t3 * t4 - t1 * t2 * t5;
+	out._y = t0 * t2 * t5 + t1 * t3 * t4;
+	out._z = t1 * t2 * t4 - t0 * t3 * t5;
 
 	return out;
 
-}
+}*/
 
 //各オペレータ
 Vector3 Vector3::operator +(Vector3 arg_vec) {

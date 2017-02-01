@@ -14,7 +14,7 @@ Quaternion::Quaternion(int arg_x, int arg_y, int arg_z, int arg_w) {
 	_z = arg_z;
 	_w = arg_w;
 
-	const_cast<Vector3&>(this->_euler) = this->ToVector3();
+	//const_cast<Vector3&>(this->_euler) = this->ToVector3();
 }
 
 Quaternion::Quaternion(float arg_x, float arg_y, float arg_z, float arg_w) {
@@ -23,7 +23,7 @@ Quaternion::Quaternion(float arg_x, float arg_y, float arg_z, float arg_w) {
 	_z = arg_z;
 	_w = arg_w;
 
-	const_cast<Vector3&>(this->_euler) = this->ToVector3();
+	//const_cast<Vector3&>(this->_euler) = this->ToVector3();
 }
 
 Quaternion::Quaternion(Vector4 arg_vec) {
@@ -32,7 +32,7 @@ Quaternion::Quaternion(Vector4 arg_vec) {
 	_z = arg_vec._z;
 	_w = arg_vec._w;
 
-	const_cast<Vector3&>(this->_euler) = this->ToVector3();
+	//const_cast<Vector3&>(this->_euler) = this->ToVector3();
 }
 
 Quaternion::~Quaternion() {
@@ -45,7 +45,7 @@ void Quaternion::Identity() {
 	this->_x = this->_y = this->_z = 0;
 	this->_w = 1;
 
-	const_cast<Vector3&>(this->_euler) = this->ToVector3();
+	//const_cast<Vector3&>(this->_euler) = this->ToVector3();
 }
 
 //長さ
@@ -60,13 +60,13 @@ void Quaternion::Set(Quaternion arg_quat) {
 	this->_z = arg_quat._z;
 	this->_w = arg_quat._w;
 
-	const_cast<Vector3&>(this->_euler) = this->ToVector3();
+	//const_cast<Vector3&>(this->_euler) = this->ToVector3();
 }
 
 //各オペレータ
 void Quaternion::operator =(Quaternion arg_quat) {
 	this->Set(arg_quat);
-	const_cast<Vector3&>(this->_euler) = this->ToVector3();
+	//const_cast<Vector3&>(this->_euler) = this->ToVector3();
 }
 
 //任意軸回転四元数
@@ -107,7 +107,7 @@ void Quaternion::operator =(Quaternion arg_quat) {
 
 
 //４→３
-Vector3 Quaternion::ToVector3() {
+/*Vector3 Quaternion::ToVector3() {
 	Vector3 out = Vector3::ZERO;
 
 	float ysqr = this->_y * this->_y;
@@ -126,7 +126,7 @@ Vector3 Quaternion::ToVector3() {
 
 	return out;
 }
-
+*/
 
 //オイラー角でセットできるよ
 /*void Quaternion::operator =(Vector3) {
@@ -145,7 +145,7 @@ Quaternion Quaternion::operator *(Quaternion arg_quat) {
 	outQ._y = newVector3._y;
 	outQ._z = newVector3._z;
 
-	const_cast<Vector3&>(this->_euler) = this->ToVector3();
+	//const_cast<Vector3&>(this->_euler) = this->ToVector3();
 
 	return outQ;
 }
@@ -162,7 +162,7 @@ Quaternion Quaternion::operator +(Quaternion arg_quat) {
 	outQ._z = this->_z + arg_quat._z;
 	outQ._w = this->_w + arg_quat._w;
 	
-	const_cast<Vector3&>(this->_euler) = this->ToVector3();
+	//const_cast<Vector3&>(this->_euler) = this->ToVector3();
 
 	return outQ;
 }
@@ -179,7 +179,7 @@ Quaternion Quaternion::operator -(Quaternion arg_quat) {
 	outQ._z = this->_z - arg_quat._z;
 	outQ._w = this->_w - arg_quat._w;
 
-	const_cast<Vector3&>(this->_euler) = this->ToVector3();
+	//const_cast<Vector3&>(this->_euler) = this->ToVector3();
 
 	return outQ;
 }
