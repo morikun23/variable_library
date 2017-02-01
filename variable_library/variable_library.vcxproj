@@ -118,6 +118,7 @@
     <ClCompile Include="DefaultScene.cpp" />
     <ClCompile Include="Direct3DManager.cpp" />
     <ClCompile Include="Frame.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainSystem.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="Matrix.cpp" />

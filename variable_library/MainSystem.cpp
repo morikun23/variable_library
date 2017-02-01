@@ -1,5 +1,4 @@
 #include"MainSystem.h"
-#include"InputV.h"
 
 void MainSystem::Load() {
 	
@@ -15,7 +14,6 @@ void MainSystem::Load() {
 
 	//DirectInputの初期化
 	//今後、小野のクラスから一部統合予定
-	InputV::Init(_hInstance, _window->GetHandle());
 
 	//DirectSoundの初期化
 	//今後、甲斐のクラスから統合予定

@@ -12,11 +12,10 @@
 #include"Vector3.h"
 #include"Vector4.h"
 #include"Quaternion.h"
-#include"MatrixBase.h"
 
 namespace variableNS {
 
-	class Matrix : public MatrixBase{
+	class Matrix{
 
 	public:
 		union{
