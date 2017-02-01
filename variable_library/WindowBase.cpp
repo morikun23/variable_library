@@ -36,8 +36,8 @@ bool WindowBase::Create(HINSTANCE arg_hInstance) {
 		_name.c_str(),				//クラス名
 		_name.c_str(),				//ウィンドウ名
 		WS_OVERLAPPEDWINDOW,		//ウィンドウスタイル
-		(int)_position.x,			//ウィンドウのx座標
-		(int)_position.y,			//ウィンドウのy座標
+		(int)_position._x,			//ウィンドウのx座標
+		(int)_position._y,			//ウィンドウのy座標
 		_width,					//ウィンドウの幅
 		_height,					//ウィンドウの高さ
 		(HWND)NULL,					//親ウィンドウのハンドル
